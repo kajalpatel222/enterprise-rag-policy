@@ -12,23 +12,44 @@ RAW_DATA_DIR = PROJECT_ROOT / "data" / "raw"
 SECTION_PATTERN = re.compile(
     r"(?m)^(?P<number>\d+)\.\s+(?P<title>[^\n]+)\n[-=]+\n"
 )
+SUBSECTION_PATTERN = re.compile(r"(?m)^(?!\s)(?P<title>[A-Z][^:\n]{1,60}):\s*$")
+VERSION_PATTERN = re.compile(
+    r"Version\s+(?P<version>[^|\n]+)\|\s+(?P<label>[^:]+):\s+(?P<date>[^\n]+)"
+)
 
 
-def extract_chunks(path: Path) -> list[dict[str, str]]:
+def extract_chunks(path: Path) -> list[dict[str, object]]:
     text = path.read_text(encoding="utf-8").strip()
     matches = list(SECTION_PATTERN.finditer(text))
-    chunks: list[dict[str, str]] = []
+    chunks: list[dict[str, object]] = []
+    version_match = VERSION_PATTERN.search(text)
+    document_version = version_match.group("version").strip() if version_match else ""
+    document_date_label = version_match.group("label").strip() if version_match else ""
+    document_date = version_match.group("date").strip() if version_match else ""
+    document_title = text.splitlines()[0].strip()
+    department = path.parent.name
 
     for index, match in enumerate(matches):
         body_start = match.end()
         body_end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         body = text[body_start:body_end].strip()
+        subsection_titles = [
+            match.group("title").strip()
+            for match in SUBSECTION_PATTERN.finditer(body)
+            if not match.group("title").startswith(("The ", "To ", "ACME ", "Example "))
+        ]
         chunks.append(
             {
                 "text": f"{match.group('title').strip()}\n\n{body}",
                 "source_file": str(path.relative_to(PROJECT_ROOT)),
+                "department": department,
+                "document_title": document_title,
+                "document_version": document_version,
+                "document_date_label": document_date_label,
+                "document_date": document_date,
                 "section_number": match.group("number"),
                 "section_title": match.group("title").strip(),
+                "subsection_titles": subsection_titles,
             }
         )
 
@@ -50,6 +71,19 @@ def main() -> None:
 
     if all_chunks:
         print("\nFirst chunk preview:\n")
+        print("Metadata:")
+        for key in (
+            "department",
+            "document_title",
+            "document_version",
+            "document_date_label",
+            "document_date",
+            "section_number",
+            "section_title",
+            "subsection_titles",
+        ):
+            print(f"  {key}: {all_chunks[0][key]}")
+        print("\nText:")
         print(all_chunks[0]["text"][:600])
 
 
