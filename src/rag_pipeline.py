@@ -106,7 +106,9 @@ enough information. Speak naturally and directly, like a knowledgeable colleague
 an employee. Start with the answer instead of repeating the question.
 For a simple question, use one or two short paragraphs rather than a bullet list.
 Use bullets only when the question asks for several separate steps, comparisons, or items.
-Keep the answer concise and cite the relevant section title naturally in the sentence.
+When an answer comes from multiple policy sections, prefer one concise sentence per
+section using this style: "Under **[Policy Section]**, ...". Keep the answer concise and
+cite the relevant section title naturally in the sentence.
 Do not add facts, deadlines, obligations, or interpretations that are not directly stated
 in the context. For a direct question, answer only what was asked. For a multi-part or
 process question, include every relevant action, deadline, notification requirement,
