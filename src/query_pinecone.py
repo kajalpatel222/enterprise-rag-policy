@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import argparse
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -20,7 +21,10 @@ logger = logging.getLogger(__name__)
 
 
 def main() -> None:
-    question = "How many days of annual leave can a full-time employee take?"
+    parser = argparse.ArgumentParser(description="Retrieve policy chunks for a question")
+    parser.add_argument("--question", required=True, help="The employee question")
+    args = parser.parse_args()
+    question = args.question
     load_dotenv(PROJECT_ROOT / ".env")
     logger.info("Question: %s", question)
     logger.info("Embedding the question with %s", os.environ["EMBEDDING_MODEL"])
