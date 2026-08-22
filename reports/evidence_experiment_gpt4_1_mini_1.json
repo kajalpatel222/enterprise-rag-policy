@@ -1,0 +1,218 @@
+[
+  {
+    "id": "EQ2-03",
+    "question": "A P1 incident involves personal data exposed through an API. What are the response, containment, regulatory-notification, and reporting requirements?",
+    "retrieval_seconds": 1.1940408420050517,
+    "baseline": {
+      "answer": "For a P1 incident involving personal data exposed through an API, ACME's requirements are:\n\n- **Response and Containment:** The incident response team must be engaged within 15 minutes, and containment must be achieved within 1 hour (INCIDENT RESPONSE POLICY).\n\n- **Regulatory Notification:** Since personal data is involved, GDPR requires notifying the supervisory authority within 72 hours of the breach. If the risk to individuals is high, affected individuals must be notified without undue delay (INCIDENT RESPONSE POLICY).\n\n- **Reporting:** The incident must be reported immediately to security@acme.com or via the 24/7 Security Hotline at 1-800-555-CERT (INCIDENT RESPONSE POLICY).\n\nNo other specific regulatory notifications apply unless financial data or state-specific laws are involved, which is not stated here.",
+      "answer_seconds": 2.448465624009259,
+      "total_seconds": 3.6425064660143107
+    },
+    "evidence_first": {
+      "evidence": {
+        "facts": [
+          {
+            "section": "INCIDENT RESPONSE POLICY",
+            "fact": "P1 (Critical): Active breach, ransomware, or data exfiltration in progress",
+            "condition": null
+          },
+          {
+            "section": "INCIDENT RESPONSE POLICY",
+            "fact": "P1: Incident response team engaged within 15 minutes; containment within 1 hour",
+            "condition": null
+          },
+          {
+            "section": "INCIDENT RESPONSE POLICY",
+            "fact": "GDPR: Supervisory authority must be notified within 72 hours of a breach involving personal data (Article 33). Affected individuals notified without undue delay if risk is high.",
+            "condition": null
+          },
+          {
+            "section": "INCIDENT RESPONSE POLICY",
+            "fact": "Report an incident to: security@acme.com or call the 24/7 Security Hotline: 1-800-555-CERT",
+            "condition": null
+          }
+        ],
+        "conflicts": [],
+        "missing_information": [
+          "Specific internal reporting format or timeline beyond initial contact for P1 incidents",
+          "Details on containment procedures or responsible teams",
+          "Clarification if additional regulatory notifications beyond GDPR apply for API data exposure"
+        ]
+      },
+      "extraction_seconds": 3.860990415996639,
+      "answer": "For a P1 incident involving personal data exposed through an API, the response and containment requirements are:\n\n- The incident response team must be engaged within 15 minutes.\n- Containment must be achieved within 1 hour.\n\nRegarding regulatory notification under GDPR:\n\n- The supervisory authority must be notified within 72 hours of the breach.\n- Affected individuals must be notified without undue delay if there is a high risk to them.\n\nFor reporting the incident internally:\n\n- Report to security@acme.com or call the 24/7 Security Hotline at 1-800-555-CERT.\n\nThe policy corpus does not provide specific internal reporting formats or timelines beyond initial contact, details on containment procedures or responsible teams, or clarification if additional regulatory notifications beyond GDPR apply for API data exposure.",
+      "answer_seconds": 2.2789431280107237,
+      "total_seconds": 7.3339743860124145
+    },
+    "retrieved_sections": [
+      "INCIDENT RESPONSE POLICY",
+      "DATA PRIVACY AND GDPR COMPLIANCE",
+      "SLA AND UPTIME",
+      "THIRD-PARTY VENDOR MANAGEMENT",
+      "ACCEPTABLE USE POLICY"
+    ]
+  },
+  {
+    "id": "EQ2-07",
+    "question": "What protections apply to a privileged administrator who works remotely?",
+    "retrieval_seconds": 0.5681270189961651,
+    "baseline": {
+      "answer": "A privileged administrator working remotely must comply with the following protections:\n\n- Remote work is allowed up to 3 days per week after 6 months probation, with manager approval and adherence to core hours (10:00 AM \u2013 3:00 PM local time), and must be reachable via Slack during those hours (REMOTE WORK POLICY).\n- Privileged access requires Multi-Factor Authentication (MFA), follows the principle of least privilege, and is reviewed quarterly (INFORMATION SECURITY POLICY).\n- Laptops used must have full-disk encryption enabled (BitLocker for Windows, FileVault for Mac) (INFORMATION SECURITY POLICY).\n- All data in transit must use TLS 1.2 or higher, and data at rest must be encrypted with AES-256 (INFORMATION SECURITY POLICY).\n- Use of corporate systems must avoid security risks and comply with acceptable use rules, including prohibition on circumventing security controls (ACCEPTABLE USE POLICY).\n\nThese controls ensure secure, auditable, and compliant privileged access while working remotely.",
+      "answer_seconds": 3.170170279001468,
+      "total_seconds": 3.738297297997633
+    },
+    "evidence_first": {
+      "evidence": {
+        "facts": [
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Employees may work remotely up to 3 days per week after completing their 6-month probationary period.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Remote work days must be agreed upon with the direct manager in advance.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Core working hours of 10:00 AM \u2013 3:00 PM (local time) must be maintained regardless of location.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Employees working remotely must be reachable via Slack and respond within 30 minutes during core hours.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Fully remote arrangements (5 days/week) require VP-level approval and are reviewed annually.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Employees cannot work remotely from outside their country of employment without prior written approval from HR and Legal.",
+            "condition": null
+          },
+          {
+            "section": "INFORMATION SECURITY POLICY",
+            "fact": "All systems access follows the principle of least privilege.",
+            "condition": null
+          },
+          {
+            "section": "INFORMATION SECURITY POLICY",
+            "fact": "Privileged access (admin/root) requires Multi-Factor Authentication (MFA).",
+            "condition": null
+          },
+          {
+            "section": "INFORMATION SECURITY POLICY",
+            "fact": "Access is reviewed and recertified quarterly.",
+            "condition": null
+          },
+          {
+            "section": "INFORMATION SECURITY POLICY",
+            "fact": "Terminated employee access is revoked within 2 hours of HR notification.",
+            "condition": null
+          },
+          {
+            "section": "INFORMATION SECURITY POLICY",
+            "fact": "Shared/generic accounts are prohibited; all access must be individual and auditable.",
+            "condition": null
+          },
+          {
+            "section": "INFORMATION SECURITY POLICY",
+            "fact": "Laptops must have full-disk encryption enabled (BitLocker for Windows, FileVault for Mac).",
+            "condition": null
+          }
+        ],
+        "conflicts": [],
+        "missing_information": [
+          "Specific protections or accommodations uniquely applicable to privileged administrators working remotely beyond standard remote work and information security policies.",
+          "Any additional policies or procedures that address privileged administrator remote work security or privacy protections specifically."
+        ]
+      },
+      "extraction_seconds": 7.088564760008012,
+      "answer": "A privileged administrator who works remotely is protected by the following policies:\n\n- They must follow the general remote work rules: working up to 3 days per week after a 6-month probation, agreeing remote days with their manager, maintaining core hours of 10:00 AM \u2013 3:00 PM local time, and being reachable via Slack with a 30-minute response time during core hours.\n- They cannot work remotely from outside their country of employment without prior written approval from HR and Legal.\n- From an information security perspective, privileged access requires Multi-Factor Authentication (MFA).\n- All systems access, including privileged access, follows the principle of least privilege.\n- Access is reviewed and recertified quarterly.\n- Shared or generic accounts are prohibited; all access must be individual and auditable.\n- Laptops used must have full-disk encryption enabled (BitLocker for Windows, FileVault for Mac).\n\nThe policy corpus does not provide any additional specific protections or accommodations uniquely applicable to privileged administrators working remotely beyond these standard remote work and information security policies.",
+      "answer_seconds": 4.398778903996572,
+      "total_seconds": 12.055470683000749
+    },
+    "retrieved_sections": [
+      "REMOTE WORK POLICY",
+      "INFORMATION SECURITY POLICY",
+      "ACCEPTABLE USE POLICY",
+      "DATA PRIVACY AND GDPR COMPLIANCE",
+      "INCIDENT RESPONSE POLICY"
+    ]
+  },
+  {
+    "id": "EQ2-18",
+    "question": "What are the remote-work rules for an employee who has completed Day 90 but not the 6-month probationary period?",
+    "retrieval_seconds": 0.48365269000350963,
+    "baseline": {
+      "answer": "An employee who has completed Day 90 but not the full 6-month probationary period is not yet eligible for remote work. Remote work eligibility begins only after completing the 6-month probationary period, allowing up to 3 remote days per week with manager approval.",
+      "answer_seconds": 1.243153960997006,
+      "total_seconds": 1.7268066510005156
+    },
+    "evidence_first": {
+      "evidence": {
+        "facts": [
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Employees may work remotely up to 3 days per week after completing their 6-month probationary period.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Remote work days must be agreed upon with the direct manager in advance.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "The employee is responsible for maintaining a safe, ergonomic, and distraction-free workspace.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Core working hours of 10:00 AM \u2013 3:00 PM (local time) must be maintained regardless of location.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Employees working remotely must be reachable via Slack and respond within 30 minutes during core hours.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Fully remote arrangements (5 days/week) require VP-level approval and are reviewed annually.",
+            "condition": null
+          },
+          {
+            "section": "REMOTE WORK POLICY",
+            "fact": "Employees cannot work remotely from outside their country of employment without prior written approval from HR and Legal.",
+            "condition": null
+          },
+          {
+            "section": "ONBOARDING PROCESS",
+            "fact": "Day 90: Probationary period ends; remote work eligibility begins",
+            "condition": null
+          }
+        ],
+        "conflicts": [],
+        "missing_information": [
+          "Policy does not specify remote work rules for employees who have completed Day 90 but have not yet completed the 6-month probationary period."
+        ]
+      },
+      "extraction_seconds": 4.657070689005195,
+      "answer": "The policy states that employees may work remotely up to 3 days per week only after completing their 6-month probationary period. It also says that Day 90 marks the end of the probationary period and the start of remote work eligibility, but it does not clarify the rules for employees who have completed Day 90 but not the full 6 months.\n\nTherefore, the policy corpus does not provide enough information about remote work rules for an employee who has completed Day 90 but not the 6-month probationary period.",
+      "answer_seconds": 2.095500091003487,
+      "total_seconds": 7.236223470012192
+    },
+    "retrieved_sections": [
+      "REMOTE WORK POLICY",
+      "ONBOARDING PROCESS",
+      "ANNUAL LEAVE POLICY",
+      "SICK LEAVE POLICY",
+      "DATA PRIVACY AND GDPR COMPLIANCE"
+    ]
+  }
+]

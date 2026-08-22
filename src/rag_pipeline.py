@@ -11,6 +11,7 @@ from typing import Any
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
+from pydantic import BaseModel, Field
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -19,6 +20,32 @@ STOP_WORDS = {
     "a", "an", "and", "are", "by", "can", "does", "how", "is",
     "must", "of", "the", "to", "what", "when", "with",
 }
+
+
+class EvidenceFact(BaseModel):
+    """One policy fact that is directly useful for answering the question."""
+
+    section: str = Field(description="Policy section containing the fact")
+    fact: str = Field(description="Exact fact, including required numbers and terms")
+    condition: str | None = Field(
+        default=None,
+        description="Any condition such as 'if applicable'; null when unconditional",
+    )
+
+
+class EvidenceConflict(BaseModel):
+    """Two or more policy facts that cannot all be applied as one clear rule."""
+
+    sections: list[str] = Field(description="Sections containing the conflicting rules")
+    description: str = Field(description="A concise explanation of the conflict")
+
+
+class EvidencePacket(BaseModel):
+    """Structured evidence extracted before the final answer is written."""
+
+    facts: list[EvidenceFact]
+    conflicts: list[EvidenceConflict]
+    missing_information: list[str]
 
 
 def keyword_score(question: str, text: str) -> float:
@@ -124,6 +151,66 @@ Question:
 
 Policy context:
 {context}
+"""
+    answer_start = time.perf_counter()
+    answer = chat.invoke(prompt).content
+    return answer, time.perf_counter() - answer_start
+
+
+def extract_evidence(
+    chat: ChatOpenAI,
+    question: str,
+    retrieved: list[dict[str, Any]],
+) -> tuple[EvidencePacket, float]:
+    """Extract relevant facts and conflicts before attempting an answer."""
+    context = "\n\n---\n\n".join(
+        f"Section: {item['metadata'].get('section_title')}\n{item['text']}"
+        for item in retrieved
+    )
+    prompt = f"""Extract the policy evidence needed to answer the question.
+
+Rules:
+- Include every fact needed for each part of the question.
+- Preserve exact numbers, deadlines, technical terms, and conditions.
+- Exclude nearby facts that do not affect the answer.
+- Compare all relevant sections and record contradictions as conflicts.
+- Do not choose between conflicting rules.
+- Record what is missing when the context cannot answer part of the question.
+
+Question:
+{question}
+
+Policy context:
+{context}
+"""
+    # Structured output forces the first call to return evidence instead of prose.
+    structured_chat = chat.with_structured_output(EvidencePacket, method="json_schema")
+    extraction_start = time.perf_counter()
+    evidence = structured_chat.invoke(prompt)
+    return evidence, time.perf_counter() - extraction_start
+
+
+def answer_from_evidence(
+    chat: ChatOpenAI,
+    question: str,
+    evidence: EvidencePacket,
+) -> tuple[str, float]:
+    """Write the final response using only a previously extracted evidence packet."""
+    prompt = f"""You are a helpful internal ACME policy assistant.
+
+Answer using only the structured evidence below.
+- Answer directly and conversationally.
+- Include every requested fact, condition, deadline, exact term, and contact.
+- State conflicts without selecting a rule.
+- If evidence is missing, say the policy corpus does not provide enough information.
+- Do not add facts or interpretations that are absent from the evidence.
+- Use short paragraphs unless steps or multiple requirements need bullets.
+
+Question:
+{question}
+
+Structured evidence:
+{evidence.model_dump_json(indent=2)}
 """
     answer_start = time.perf_counter()
     answer = chat.invoke(prompt).content
