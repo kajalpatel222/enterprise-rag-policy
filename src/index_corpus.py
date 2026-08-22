@@ -21,11 +21,13 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
 def build_documents() -> tuple[list[Document], list[str]]:
+    """Turn policy sections into LangChain Documents and stable record IDs."""
     documents: list[Document] = []
     ids: list[str] = []
 
     for path in sorted(RAW_DATA_DIR.glob("*/*.txt")):
         for chunk in extract_chunks(path):
+            # Pinecone metadata describes the chunk; page_content is what gets embedded.
             metadata = {key: value for key, value in chunk.items() if key != "text"}
             chunk_id = (
                 f"{metadata['department']}-"
@@ -39,6 +41,7 @@ def build_documents() -> tuple[list[Document], list[str]]:
 
 
 def main() -> None:
+    # Load API keys and project settings from the local .env file.
     load_dotenv(PROJECT_ROOT / ".env")
     required = [
         "PINECONE_API_KEY",
@@ -52,6 +55,7 @@ def main() -> None:
     if missing:
         raise RuntimeError(f"Missing environment variables: {', '.join(missing)}")
 
+    # Build all documents before making the embedding and Pinecone calls.
     documents, ids = build_documents()
     embeddings = OpenAIEmbeddings(
         model=os.environ["EMBEDDING_MODEL"],
@@ -64,6 +68,7 @@ def main() -> None:
         embedding=embeddings,
         pinecone_api_key=os.environ["PINECONE_API_KEY"],
     )
+    # LangChain embeds each document and upserts the vectors plus metadata.
     vector_store.add_documents(documents=documents, ids=ids)
 
     print(f"Indexed {len(documents)} chunks")

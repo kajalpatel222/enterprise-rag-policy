@@ -19,6 +19,7 @@ VERSION_PATTERN = re.compile(
 
 
 def extract_chunks(path: Path) -> list[dict[str, object]]:
+    # Read one source document and identify its numbered policy sections.
     text = path.read_text(encoding="utf-8").strip()
     matches = list(SECTION_PATTERN.finditer(text))
     chunks: list[dict[str, object]] = []
@@ -30,9 +31,11 @@ def extract_chunks(path: Path) -> list[dict[str, object]]:
     department = path.parent.name
 
     for index, match in enumerate(matches):
+        # A section ends where the next numbered section begins.
         body_start = match.end()
         body_end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         body = text[body_start:body_end].strip()
+        # Keep clear subsection labels as optional metadata for later citations.
         subsection_titles = [
             match.group("title").strip()
             for match in SUBSECTION_PATTERN.finditer(body)
@@ -57,6 +60,7 @@ def extract_chunks(path: Path) -> list[dict[str, object]]:
 
 
 def main() -> None:
+    # Preview every source file without calling an external service.
     files = sorted(RAW_DATA_DIR.glob("*/*.txt"))
     all_chunks = [chunk for path in files for chunk in extract_chunks(path)]
 

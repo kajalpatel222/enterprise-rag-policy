@@ -21,19 +21,23 @@ logger = logging.getLogger(__name__)
 
 
 def main() -> None:
+    # Read the question from the terminal instead of hardcoding it in the file.
     parser = argparse.ArgumentParser(description="Retrieve policy chunks for a question")
     parser.add_argument("--question", required=True, help="The employee question")
     args = parser.parse_args()
     question = args.question
+    # Load credentials and model settings without printing secret values.
     load_dotenv(PROJECT_ROOT / ".env")
     logger.info("Question: %s", question)
     logger.info("Embedding the question with %s", os.environ["EMBEDDING_MODEL"])
 
+    # The question must use the same embedding model as the indexed documents.
     embeddings = OpenAIEmbeddings(
         model=os.environ["EMBEDDING_MODEL"],
         api_key=os.environ["OPENROUTER_API_KEY"],
         base_url=os.environ["OPENROUTER_BASE_URL"],
     )
+    # This object knows how to query our existing Pinecone index.
     vector_store = PineconeVectorStore(
         index_name=os.environ["PINECONE_INDEX_NAME"],
         namespace=os.environ["PINECONE_NAMESPACE"],
@@ -42,6 +46,7 @@ def main() -> None:
     )
 
     logger.info("Searching Pinecone for the top 3 matches")
+    # Retrieve the three chunks whose meanings are closest to the question.
     matches = vector_store.similarity_search_with_score(question, k=3)
     results = [
         {
@@ -51,6 +56,7 @@ def main() -> None:
         }
         for document, score in matches
     ]
+    # Save retrieval results so we can inspect them before asking the chat model.
     OUTPUT_PATH.write_text(
         json.dumps({"question": question, "results": results}, indent=2),
         encoding="utf-8",

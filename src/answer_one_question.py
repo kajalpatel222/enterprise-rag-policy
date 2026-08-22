@@ -20,9 +20,11 @@ logger = logging.getLogger(__name__)
 
 
 def main() -> None:
+    # Load the question and retrieved policy chunks produced by query_pinecone.py.
     load_dotenv(PROJECT_ROOT / ".env")
     retrieval = json.loads(RETRIEVAL_PATH.read_text(encoding="utf-8"))
     question = retrieval["question"]
+    # Put the retrieved chunks into a clearly separated context block.
     context = "\n\n---\n\n".join(
         f"Source: {result['metadata']['source_file']}\n"
         f"Section: {result['metadata']['section_title']}\n"
@@ -30,6 +32,8 @@ def main() -> None:
         for result in retrieval["results"]
     )
 
+    # This instruction is our main anti-hallucination guardrail:
+    # the model must refuse when the retrieved context does not contain an answer.
     prompt = f"""Answer the employee's question using only the policy context below.
 If the context does not contain the answer, say that the policy corpus does not provide
 enough information. Keep the answer concise and cite the relevant section title.
@@ -42,6 +46,7 @@ Policy context:
 """
 
     logger.info("Sending retrieved context to chat model: %s", os.environ["CHAT_MODEL"])
+    # The chat model writes the final answer; it does not search Pinecone itself.
     chat = ChatOpenAI(
         model=os.environ["CHAT_MODEL"],
         api_key=os.environ["OPENROUTER_API_KEY"],
@@ -50,6 +55,7 @@ Policy context:
     )
     response = chat.invoke(prompt)
     answer = response.content
+    # Save the answer together with sources so we can audit the response later.
     result = {
         "question": question,
         "answer": answer,
