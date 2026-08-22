@@ -1,0 +1,982 @@
+[
+  {
+    "id": "EQ2-01",
+    "question": "A new employee is starting today. What happens on Day 1, and what security principle should govern their system access?",
+    "top_score": 0.46903389560000003,
+    "top_vector_score": 0.555762708,
+    "top_keyword_score": 0.26666666666666666,
+    "top_section": "ONBOARDING PROCESS",
+    "retrieval_seconds": 1.1034185099997558,
+    "answer_seconds": 1.991133974006516,
+    "total_seconds": 3.0946780660015065,
+    "answer": "On Day 1, the new employee completes:\n\n- IT setup\n- Security training\n- HR orientation\n\nTheir system access must follow the **principle of least privilege**, meaning access should be limited to what their role requires. All access must also be individual and auditable; shared or generic accounts are prohibited.  \n*(ONBOARDING PROCESS; INFORMATION SECURITY POLICY)*",
+    "retrieved": [
+      {
+        "score": 0.46903389560000003,
+        "vector_score": 0.555762708,
+        "keyword_score": 0.26666666666666666,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.39692673079999996,
+        "vector_score": 0.424181044,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3794285247,
+        "vector_score": 0.313469321,
+        "keyword_score": 0.5333333333333333,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.33833520689999996,
+        "vector_score": 0.340478867,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.318926947,
+        "vector_score": 0.34132421,
+        "keyword_score": 0.26666666666666666,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-02",
+    "question": "An employee wants to work remotely from outside their country while handling personal data. What approval and data-transfer safeguards apply?",
+    "top_score": 0.5309131326,
+    "top_vector_score": 0.544161618,
+    "top_keyword_score": 0.5,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.4860363689949736,
+    "answer_seconds": 6.473156081992784,
+    "total_seconds": 6.959223876998294,
+    "answer": "- **Remote-work approval:** Remote days must be agreed with the direct manager in advance. Working outside the country of employment also requires **prior written approval from HR and Legal**. If the arrangement is fully remote (5 days/week), **VP-level approval** is additionally required. *(Remote Work Policy)*\n\n- **Cross-border data approval:** Any cross-border transfer of personal data must be approved by the **DPO** at **dpo@acme.com**. If data is transferred outside the EEA, it must use an approved mechanism: **Standard Contractual Clauses (SCCs), an adequacy decision, or Binding Corporate Rules (BCRs)**. *(Data Privacy and GDPR Compliance)*\n\n- **Security safeguards:** Data in transit must use **TLS 1.2 or higher**, data at rest must use **AES-256**, and the laptop must have full-disk encryption enabled. Sensitive data may not be stored on personal devices, personal email may not be used for business communications, and security controls may not be bypassed. *(Information Security Policy; Acceptable Use Policy)*",
+    "retrieved": [
+      {
+        "score": 0.5309131326,
+        "vector_score": 0.544161618,
+        "keyword_score": 0.5,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.49102569999999995,
+        "vector_score": 0.540751,
+        "keyword_score": 0.375,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.37125511469999994,
+        "vector_score": 0.476793021,
+        "keyword_score": 0.125,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.34147982599999993,
+        "vector_score": 0.40747118,
+        "keyword_score": 0.1875,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3243932696,
+        "vector_score": 0.409847528,
+        "keyword_score": 0.125,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-03",
+    "question": "A P1 incident involves personal data exposed through an API. What are the response, containment, regulatory-notification, and reporting requirements?",
+    "top_score": 0.6148404325571428,
+    "top_vector_score": 0.602833271,
+    "top_keyword_score": 0.6428571428571429,
+    "top_section": "INCIDENT RESPONSE POLICY",
+    "retrieval_seconds": 0.38152635500591714,
+    "answer_seconds": 4.389502752994304,
+    "total_seconds": 4.771056821991806,
+    "answer": "- **Response:** Engage the incident response team within **15 minutes**. P1 API incidents must also be acknowledged within **15 minutes**.\n- **Containment:** Contain the incident within **1 hour**.\n- **Regulatory notification:**\n  - Notify the GDPR supervisory authority within **72 hours** because personal data is involved.\n  - Notify affected individuals **without undue delay if the risk is high**.\n  - State breach-notification deadlines vary by jurisdiction, from **14 to 90 days**.\n  - If financial data is involved and the requirement applies, notify the **SEC/FinCEN within 30 days**.\n- **Internal reporting:** Email **security@acme.com** or call the 24/7 Security Hotline at **1-800-555-CERT**.\n\nSources: **INCIDENT RESPONSE POLICY**; **SLA AND UPTIME**.",
+    "retrieved": [
+      {
+        "score": 0.6148404325571428,
+        "vector_score": 0.602833271,
+        "keyword_score": 0.6428571428571429,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.35306036828571424,
+        "vector_score": 0.41253522,
+        "keyword_score": 0.21428571428571427,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3306232206142857,
+        "vector_score": 0.349869907,
+        "keyword_score": 0.2857142857142857,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3172774231857143,
+        "vector_score": 0.361416727,
+        "keyword_score": 0.21428571428571427,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3063909406571429,
+        "vector_score": 0.376476854,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-04",
+    "question": "A developer receives HTTP 429 while using an OAuth access token. What does the error mean, how should they retry, and how long is the token valid?",
+    "top_score": 0.41900798689999996,
+    "top_vector_score": 0.464654267,
+    "top_keyword_score": 0.3125,
+    "top_section": "ERROR CODES REFERENCE",
+    "retrieval_seconds": 0.7342248700006166,
+    "answer_seconds": 2.043167381998501,
+    "total_seconds": 2.777418415003922,
+    "answer": "HTTP 429 means the API rate limit has been exceeded.\n\n- Do not retry immediately.\n- Wait for the number of seconds specified in the `Retry-After` header. The `X-RateLimit-Reset` header also shows the Unix timestamp when the limit resets.\n- Implement exponential backoff with jitter for retries.\n\nThe OAuth access token is valid for 3,600 seconds (1 hour). Use the refresh token to obtain a new access token before it expires. The refresh token itself is valid for 30 days.\n\n(Sections: **ERROR CODES REFERENCE**, **RATE LIMITING**, **API AUTHENTICATION**)",
+    "retrieved": [
+      {
+        "score": 0.41900798689999996,
+        "vector_score": 0.464654267,
+        "keyword_score": 0.3125,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.4023572208999999,
+        "vector_score": 0.494438887,
+        "keyword_score": 0.1875,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.39774095719999997,
+        "vector_score": 0.434272796,
+        "keyword_score": 0.3125,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.1998742414,
+        "vector_score": 0.231963202,
+        "keyword_score": 0.125,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.1838168535,
+        "vector_score": 0.262595505,
+        "keyword_score": 0.0,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-05",
+    "question": "When an employee leaves ACME, what must happen to system access, and how long should employee personal data be retained afterward?",
+    "top_score": 0.6192204583153846,
+    "top_vector_score": 0.620864391,
+    "top_keyword_score": 0.6153846153846154,
+    "top_section": "DATA PRIVACY AND GDPR COMPLIANCE",
+    "retrieval_seconds": 0.46877179500006605,
+    "answer_seconds": 1.4105426160094794,
+    "total_seconds": 1.879355527998996,
+    "answer": "- System access must be revoked within **2 hours of HR notification**.\n- Employee personal data must be retained for **3 years after employment ends**.\n\n(Information Security Policy; Data Privacy and GDPR Compliance)",
+    "retrieved": [
+      {
+        "score": 0.6192204583153846,
+        "vector_score": 0.620864391,
+        "keyword_score": 0.6153846153846154,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.4946527248846154,
+        "vector_score": 0.541811585,
+        "keyword_score": 0.38461538461538464,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.4653940030846153,
+        "vector_score": 0.500013411,
+        "keyword_score": 0.38461538461538464,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.4448140066307692,
+        "vector_score": 0.536547482,
+        "keyword_score": 0.23076923076923078,
+        "section_title": "DISCIPLINARY POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.4329967298307692,
+        "vector_score": 0.519665658,
+        "keyword_score": 0.23076923076923078,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-06",
+    "question": "What steps are required before approving a high-risk vendor that handles personal data and transfers it outside the EEA?",
+    "top_score": 0.5578385866,
+    "top_vector_score": 0.568340838,
+    "top_keyword_score": 0.5333333333333333,
+    "top_section": "THIRD-PARTY VENDOR MANAGEMENT",
+    "retrieval_seconds": 0.3529410060000373,
+    "answer_seconds": 3.2315996590041323,
+    "total_seconds": 3.584592002996942,
+    "answer": "Before approval and engagement, the following steps are required:\n\n- The business owner submits a Vendor Request Form in ServiceNow.\n- Procurement reviews commercial terms and pricing, including SLA, insurance, and liability.\n- Security conducts an assessment using a standardized questionnaire\u2014SIG Lite or CAIQ, depending on criticality.\n- Legal reviews the data processing agreement and contract terms.\n- Because the vendor handles personal data, the DPO reviews and approves the DPA.\n- Because the vendor is classified as High risk, the CISO signs off.\n- For the transfer outside the EEA:\n  - An approved transfer mechanism must be used: SCCs, an adequacy decision, or BCRs.\n  - The DPO must approve the cross-border transfer.\n- The vendor is then onboarded and added to the Approved Vendor Registry.\n\n[THIRD-PARTY VENDOR MANAGEMENT; DATA PRIVACY AND GDPR COMPLIANCE]",
+    "retrieved": [
+      {
+        "score": 0.5578385866,
+        "vector_score": 0.568340838,
+        "keyword_score": 0.5333333333333333,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.4742664541999999,
+        "vector_score": 0.477523506,
+        "keyword_score": 0.4666666666666667,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3231253699,
+        "vector_score": 0.347321957,
+        "keyword_score": 0.26666666666666666,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2858713247,
+        "vector_score": 0.322673321,
+        "keyword_score": 0.2,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.28249073869999997,
+        "vector_score": 0.346415341,
+        "keyword_score": 0.13333333333333333,
+        "section_title": "AUDIT AND COMPLIANCE MONITORING",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-07",
+    "question": "What protections apply to a privileged administrator who works remotely?",
+    "top_score": 0.4171409933571429,
+    "top_vector_score": 0.534691215,
+    "top_keyword_score": 0.14285714285714285,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.38041770400013775,
+    "answer_seconds": 8.462036073004128,
+    "total_seconds": 8.842488955997396,
+    "answer": "A privileged administrator working remotely is covered by these controls:\n\n- **Privileged access:** Admin/root access requires MFA, follows least privilege, is reviewed and recertified quarterly, and must use individual, auditable accounts rather than shared accounts.\n- **Device and data security:** Data in transit must use TLS 1.2 or higher, data at rest must use AES-256, and the laptop must have full-disk encryption enabled.\n- **Secure use:** Security controls cannot be bypassed or disabled. Sensitive data cannot be stored on personal devices, and personal email cannot be used for business communications.  \n  *(Information Security Policy; Acceptable Use Policy)*\n\nRemote-work conditions also apply:\n\n- The workspace must be safe, ergonomic, and distraction-free.\n- Remote days require advance agreement with the direct manager; fully remote arrangements require VP approval and annual review.\n- Working outside the country of employment requires prior written approval from HR and Legal.\n- The employee must maintain core hours and meet the Slack availability requirement.  \n  *(Remote Work Policy)*\n\nUse of corporate systems may be monitored and audited in accordance with applicable law and with reasonable notice. Employee personal data is also subject to ACME\u2019s stated data-protection rights and retention rules.  \n*(Acceptable Use Policy; Data Privacy and GDPR Compliance)*",
+    "retrieved": [
+      {
+        "score": 0.4171409933571429,
+        "vector_score": 0.534691215,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.33168983385714285,
+        "vector_score": 0.41261813,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3155694724,
+        "vector_score": 0.450813532,
+        "keyword_score": 0.0,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2458121596,
+        "vector_score": 0.351160228,
+        "keyword_score": 0.0,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24501030119999997,
+        "vector_score": 0.350014716,
+        "keyword_score": 0.0,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-08",
+    "question": "Compare the operational recovery plan for Tier 1 systems with the backup schedule and backup region.",
+    "top_score": 0.5806548270090909,
+    "top_vector_score": 0.556779623,
+    "top_keyword_score": 0.6363636363636364,
+    "top_section": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+    "retrieval_seconds": 0.49066518001200166,
+    "answer_seconds": 2.773966744003701,
+    "total_seconds": 3.2646585869952105,
+    "answer": "For Tier 1 systems:\n\n- **Operational recovery objectives:** Restore service within **4 hours (RTO)**, with no more than **1 hour of data loss (RPO)**.\n- **Backup schedule:** Database backups run **hourly incremental** and **daily full**.\n- **Backup region:** Backups are stored in the geographically separate AWS region **us-west-2**.\n- **Recovery validation:** Backup restoration is tested **quarterly**. Full failover drills occur **annually**, with tabletop exercises **twice per year**.\n\nThe hourly incremental schedule aligns with the Tier 1 one-hour RPO, while the four-hour RTO defines the target for restoring operations. [BUSINESS CONTINUITY AND DISASTER RECOVERY]",
+    "retrieved": [
+      {
+        "score": 0.5806548270090909,
+        "vector_score": 0.556779623,
+        "keyword_score": 0.6363636363636364,
+        "section_title": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2659915390181818,
+        "vector_score": 0.263104796,
+        "keyword_score": 0.2727272727272727,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24548238181818183,
+        "vector_score": 0.233806,
+        "keyword_score": 0.2727272727272727,
+        "section_title": "PERFORMANCE REVIEW PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.23655075637272727,
+        "vector_score": 0.298968613,
+        "keyword_score": 0.09090909090909091,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.23161775417272726,
+        "vector_score": 0.291921467,
+        "keyword_score": 0.09090909090909091,
+        "section_title": "AUDIT AND COMPLIANCE MONITORING",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-09",
+    "question": "What must a production deployment pass before full rollout, and what happens if the canary error rate is too high?",
+    "top_score": 0.5462755120923077,
+    "top_vector_score": 0.483690292,
+    "top_keyword_score": 0.6923076923076923,
+    "top_section": "DEPLOYMENT GUIDE",
+    "retrieval_seconds": 0.32231235499784816,
+    "answer_seconds": 2.2964719450101256,
+    "total_seconds": 2.618805706995772,
+    "answer": "A production deployment must pass all automated checks, including:\n\n- 100% of unit tests\n- Integration tests in a sandboxed environment\n- A 10-minute canary deployment that sends 10% of traffic to the new version\n\nFull rollout occurs only if the canary error rate is below 0.1%. Otherwise, the deployment is automatically rolled back.  \n\u2014 **Deployment Guide**",
+    "retrieved": [
+      {
+        "score": 0.5462755120923077,
+        "vector_score": 0.483690292,
+        "keyword_score": 0.6923076923076923,
+        "section_title": "DEPLOYMENT GUIDE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.25151796453076924,
+        "vector_score": 0.260410279,
+        "keyword_score": 0.23076923076923078,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.25116426923076923,
+        "vector_score": 0.259905,
+        "keyword_score": 0.23076923076923078,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.23347902123076922,
+        "vector_score": 0.23464036,
+        "keyword_score": 0.23076923076923078,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.23044146157692308,
+        "vector_score": 0.296235055,
+        "keyword_score": 0.07692307692307693,
+        "section_title": "AUDIT AND COMPLIANCE MONITORING",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-10",
+    "question": "A webhook endpoint returns a non-2xx response. How many times will delivery be retried, what backoff is used, and how should the signature be validated?",
+    "top_score": 0.5954556057823529,
+    "top_vector_score": 0.548129857,
+    "top_keyword_score": 0.7058823529411765,
+    "top_section": "WEBHOOKS",
+    "retrieval_seconds": 0.48311611299868673,
+    "answer_seconds": 2.2646960639976896,
+    "total_seconds": 2.74782928400964,
+    "answer": "- **Retries:** Up to 5 times after a non-2xx response.\n- **Backoff:** Exponential backoff. The specific timing is not provided.\n- **Signature validation:** Compute an HMAC-SHA256 using your webhook secret and validate it against the `X-ACME-Signature` header. Reject the webhook if it cannot be verified.\n\n\u2014 **WEBHOOKS**",
+    "retrieved": [
+      {
+        "score": 0.5954556057823529,
+        "vector_score": 0.548129857,
+        "keyword_score": 0.7058823529411765,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3441627126941176,
+        "vector_score": 0.390820682,
+        "keyword_score": 0.23529411764705882,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3031266007705882,
+        "vector_score": 0.357407749,
+        "keyword_score": 0.17647058823529413,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2400412588235294,
+        "vector_score": 0.317706,
+        "keyword_score": 0.058823529411764705,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2346024800470588,
+        "vector_score": 0.284726232,
+        "keyword_score": 0.11764705882352941,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-11",
+    "question": "What does `X-ACME-Signature` protect, and what should happen to an unverified webhook?",
+    "top_score": 0.652952,
+    "top_vector_score": 0.61136,
+    "top_keyword_score": 0.75,
+    "top_section": "WEBHOOKS",
+    "retrieval_seconds": 1.2166266240092227,
+    "answer_seconds": 1.6025296810112195,
+    "total_seconds": 2.819183078012429,
+    "answer": "`X-ACME-Signature` protects webhook payload authenticity. Validate the HMAC-SHA256 signature against your webhook secret. If verification fails, reject the webhook. [WEBHOOKS]",
+    "retrieved": [
+      {
+        "score": 0.652952,
+        "vector_score": 0.61136,
+        "keyword_score": 0.75,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.32233723099999995,
+        "vector_score": 0.40691033,
+        "keyword_score": 0.125,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3220029205,
+        "vector_score": 0.352861315,
+        "keyword_score": 0.25,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.31640518599999995,
+        "vector_score": 0.39843598,
+        "keyword_score": 0.125,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.31601114869999997,
+        "vector_score": 0.344301641,
+        "keyword_score": 0.25,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-12",
+    "question": "What do `Retry-After` and `X-RateLimit-Reset` tell a developer after a rate-limit response?",
+    "top_score": 0.6249031086545455,
+    "top_vector_score": 0.542069376,
+    "top_keyword_score": 0.8181818181818182,
+    "top_section": "RATE LIMITING",
+    "retrieval_seconds": 0.32944610599952284,
+    "answer_seconds": 2.0905977729998995,
+    "total_seconds": 2.42007766799361,
+    "answer": "- `Retry-After` gives the number of seconds to wait before retrying after an HTTP 429 response.\n- `X-RateLimit-Reset` gives the Unix timestamp when the rate limit resets.\n\nDo not retry immediately on a 429; use exponential backoff with jitter. (RATE LIMITING)",
+    "retrieved": [
+      {
+        "score": 0.6249031086545455,
+        "vector_score": 0.542069376,
+        "keyword_score": 0.8181818181818182,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.43652058290909085,
+        "vector_score": 0.35087356,
+        "keyword_score": 0.6363636363636364,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2538336554909091,
+        "vector_score": 0.206775352,
+        "keyword_score": 0.36363636363636365,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2398421787727273,
+        "vector_score": 0.303670645,
+        "keyword_score": 0.09090909090909091,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2130618545454545,
+        "vector_score": 0.226452,
+        "keyword_score": 0.18181818181818182,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-13",
+    "question": "What is the difference between `RTO` and `RPO` for Tier 1 systems?",
+    "top_score": 0.5468564153,
+    "top_vector_score": 0.459794879,
+    "top_keyword_score": 0.75,
+    "top_section": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+    "retrieval_seconds": 0.3895198660029564,
+    "answer_seconds": 4.234434793994296,
+    "total_seconds": 4.623976625996875,
+    "answer": "For Tier 1 systems:\n\n- **RTO (Recovery Time Objective): 4 hours** \u2014 the recovery time target.\n- **RPO (Recovery Point Objective): 1 hour** \u2014 the recovery point target.\n\nSo, Tier 1 systems have a **4-hour RTO** and a **1-hour RPO**.  \n(Source: **BUSINESS CONTINUITY AND DISASTER RECOVERY \u2014 Recovery Objectives**)",
+    "retrieved": [
+      {
+        "score": 0.5468564153,
+        "vector_score": 0.459794879,
+        "keyword_score": 0.75,
+        "section_title": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2929017425,
+        "vector_score": 0.257716775,
+        "keyword_score": 0.375,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.27859924169999994,
+        "vector_score": 0.237284631,
+        "keyword_score": 0.375,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2480198246,
+        "vector_score": 0.247171178,
+        "keyword_score": 0.25,
+        "section_title": "PERFORMANCE REVIEW PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.23452827799999998,
+        "vector_score": 0.22789754,
+        "keyword_score": 0.25,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-14",
+    "question": "When is `MFA` required, and what password controls apply to employees?",
+    "top_score": 0.514826441,
+    "top_vector_score": 0.52118063,
+    "top_keyword_score": 0.5,
+    "top_section": "INFORMATION SECURITY POLICY",
+    "retrieval_seconds": 0.3474811930063879,
+    "answer_seconds": 4.075273870999808,
+    "total_seconds": 4.422783702000743,
+    "answer": "MFA is required for privileged access, including admin/root access. (Information Security Policy \u2014 Access Control)\n\nEmployee password controls are: (Information Security Policy \u2014 Password Policy)\n\n- Minimum 12 characters\n- Must include uppercase, lowercase, number, and special character\n- Passwords expire every 90 days\n- Last 12 passwords may not be reused\n- 1Password is provided to all employees as the password manager",
+    "retrieved": [
+      {
+        "score": 0.514826441,
+        "vector_score": 0.52118063,
+        "keyword_score": 0.5,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.37546791999999996,
+        "vector_score": 0.3935256,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3134903253,
+        "vector_score": 0.304986179,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "AUDIT AND COMPLIANCE MONITORING",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.28523690119999995,
+        "vector_score": 0.336052716,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2767267975,
+        "vector_score": 0.323895425,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-15",
+    "question": "Why would a vendor security assessment use `SIG Lite` or `CAIQ`?",
+    "top_score": 0.5053685,
+    "top_vector_score": 0.421955,
+    "top_keyword_score": 0.7,
+    "top_section": "THIRD-PARTY VENDOR MANAGEMENT",
+    "retrieval_seconds": 0.3209775689902017,
+    "answer_seconds": 3.098012401998858,
+    "total_seconds": 3.4190191460074857,
+    "answer": "A vendor security assessment would use `SIG Lite` or `CAIQ` because ACME\u2019s Security team conducts the assessment using a standardized questionnaire, with the specific questionnaire based on the vendor\u2019s criticality.\n\nSource: **THIRD-PARTY VENDOR MANAGEMENT**",
+    "retrieved": [
+      {
+        "score": 0.5053685,
+        "vector_score": 0.421955,
+        "keyword_score": 0.7,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.34113368909999997,
+        "vector_score": 0.358762413,
+        "keyword_score": 0.3,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3064276835,
+        "vector_score": 0.309182405,
+        "keyword_score": 0.3,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.30555937980000003,
+        "vector_score": 0.350799114,
+        "keyword_score": 0.2,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2910470506,
+        "vector_score": 0.372924358,
+        "keyword_score": 0.1,
+        "section_title": "AUDIT AND COMPLIANCE MONITORING",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-16",
+    "question": "What does Article 33 require after a personal-data breach, and how does that differ from the deadline for an employee GDPR data request?",
+    "top_score": 0.46131759969999997,
+    "top_vector_score": 0.487596571,
+    "top_keyword_score": 0.4,
+    "top_section": "DATA PRIVACY AND GDPR COMPLIANCE",
+    "retrieval_seconds": 0.37866399199992884,
+    "answer_seconds": 3.062932978005847,
+    "total_seconds": 3.441628728003707,
+    "answer": "Article 33 requires that, after a breach involving personal data, the supervisory authority must be notified within 72 hours. Affected individuals must also be notified without undue delay if the risk is high. (Incident Response Policy \u2014 Regulatory Notification Requirements)\n\nThat differs from an employee GDPR data request, which must be fulfilled within 30 calendar days. Access requests also require identity verification before processing. (Data Privacy and GDPR Compliance \u2014 Data Subject Rights)",
+    "retrieved": [
+      {
+        "score": 0.46131759969999997,
+        "vector_score": 0.487596571,
+        "keyword_score": 0.4,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.4131314169,
+        "vector_score": 0.418759167,
+        "keyword_score": 0.4,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3121124764,
+        "vector_score": 0.331589252,
+        "keyword_score": 0.26666666666666666,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2848933338,
+        "vector_score": 0.264133334,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2718910311,
+        "vector_score": 0.302701473,
+        "keyword_score": 0.2,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-17",
+    "question": "What are the two different annual audit activities ACME performs, and how often does each occur?",
+    "top_score": 0.5209536446999999,
+    "top_vector_score": 0.572790921,
+    "top_keyword_score": 0.4,
+    "top_section": "PERFORMANCE REVIEW PROCESS",
+    "retrieval_seconds": 0.4153622860030737,
+    "answer_seconds": 3.4279058660031296,
+    "total_seconds": 3.843298320993199,
+    "answer": "ACME performs two annual external audit activities:\n\n- **SOC 2 Type II audit** \u2014 conducted **annually** by an accredited CPA firm, currently Deloitte.\n- **ISO 27001 surveillance audit** \u2014 conducted **annually**.\n\nSource: **Audit and Compliance Monitoring**.",
+    "retrieved": [
+      {
+        "score": 0.5209536446999999,
+        "vector_score": 0.572790921,
+        "keyword_score": 0.4,
+        "section_title": "PERFORMANCE REVIEW PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.44695833119999995,
+        "vector_score": 0.552797616,
+        "keyword_score": 0.2,
+        "section_title": "AUDIT AND COMPLIANCE MONITORING",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3813578641,
+        "vector_score": 0.459082663,
+        "keyword_score": 0.2,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.37070107809999997,
+        "vector_score": 0.443858683,
+        "keyword_score": 0.2,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.35550477959999993,
+        "vector_score": 0.465006828,
+        "keyword_score": 0.1,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-18",
+    "question": "What are the remote-work rules for an employee who has completed Day 90 but not the 6-month probationary period?",
+    "top_score": 0.6198507905,
+    "top_vector_score": 0.671215415,
+    "top_keyword_score": 0.5,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.29927100300847087,
+    "answer_seconds": 5.329594356997404,
+    "total_seconds": 5.6289035600057105,
+    "answer": "There is a policy conflict, so ACME\u2019s rules do not clearly determine whether the employee is eligible for remote work at this point.\n\n- The **Onboarding Process** says Day 90 is when the probationary period ends and remote work eligibility begins.\n- The **Remote Work Policy** says employees may work remotely only after completing their **6-month probationary period**.\n\nBecause the employee has completed Day 90 but not 6 months, the context does not say which rule controls.\n\nIf remote work is treated as allowed, the Remote Work Policy rules would apply:\n\n- Up to **3 days per week** remotely.\n- Remote days must be agreed with the direct manager in advance.\n- The employee must maintain a safe, ergonomic, distraction-free workspace.\n- Core hours of **10:00 AM\u20133:00 PM local time** must be maintained.\n- The employee must be reachable via Slack and respond within **30 minutes during core hours**.\n- Fully remote work requires VP-level approval and is reviewed annually.\n- Working remotely outside the country of employment requires prior written approval from HR and Legal.",
+    "retrieved": [
+      {
+        "score": 0.6198507905,
+        "vector_score": 0.671215415,
+        "keyword_score": 0.5,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.5241205570999999,
+        "vector_score": 0.561243653,
+        "keyword_score": 0.4375,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31732523469999996,
+        "vector_score": 0.372964621,
+        "keyword_score": 0.1875,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2821751267,
+        "vector_score": 0.322750181,
+        "keyword_score": 0.1875,
+        "section_title": "SICK LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2585543218,
+        "vector_score": 0.289006174,
+        "keyword_score": 0.1875,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-19",
+    "question": "Does ACME provide a home-office equipment stipend?",
+    "top_score": 0.4460739019999999,
+    "top_vector_score": 0.56581986,
+    "top_keyword_score": 0.16666666666666666,
+    "top_section": "COMPENSATION AND BENEFITS",
+    "retrieval_seconds": 0.4307183719938621,
+    "answer_seconds": 1.2781895230000373,
+    "total_seconds": 1.7089354950003326,
+    "answer": "The policy context does not mention a home-office equipment stipend.",
+    "retrieved": [
+      {
+        "score": 0.4460739019999999,
+        "vector_score": 0.56581986,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3702784837,
+        "vector_score": 0.457540691,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.34085386959999997,
+        "vector_score": 0.415505528,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "CODE OF CONDUCT",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3184153976,
+        "vector_score": 0.383450568,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "GRIEVANCE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31696286469999996,
+        "vector_score": 0.381375521,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-20",
+    "question": "What is the payroll cutoff date for submitting employee expenses?",
+    "top_score": 0.31549090607142855,
+    "top_vector_score": 0.267027825,
+    "top_keyword_score": 0.42857142857142855,
+    "top_section": "COMPENSATION AND BENEFITS",
+    "retrieval_seconds": 0.3322567190043628,
+    "answer_seconds": 1.8096843790117418,
+    "total_seconds": 2.141969019998214,
+    "answer": "The provided policy context does not specify a payroll cutoff date for submitting employee expenses.",
+    "retrieved": [
+      {
+        "score": 0.31549090607142855,
+        "vector_score": 0.267027825,
+        "keyword_score": 0.42857142857142855,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2798532419142857,
+        "vector_score": 0.277341366,
+        "keyword_score": 0.2857142857142857,
+        "section_title": "SICK LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2778862405142857,
+        "vector_score": 0.274531364,
+        "keyword_score": 0.2857142857142857,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2713356070571428,
+        "vector_score": 0.326397806,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.25621858485714283,
+        "vector_score": 0.30480206,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "GRIEVANCE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      }
+    ]
+  }
+]
