@@ -113,6 +113,8 @@ If the same requirement appears in more than one section, state it only once and
 the supporting sections together instead of repeating the requirement.
 For scenario questions, include the controls needed to resolve that scenario and omit
 nearby policy details that do not change the answer.
+Preserve conditional wording exactly: do not turn "if applicable", "if involved", or
+similar conditions into unconditional requirements.
 Do not add facts, deadlines, obligations, or interpretations that are not directly stated
 in the context. For a direct question, answer only what was asked. For a multi-part or
 process question, include every relevant action, deadline, notification requirement,
