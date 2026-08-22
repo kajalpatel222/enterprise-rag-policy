@@ -5,7 +5,7 @@ Run file: `evaluation_questions_2_results_3.json`
 ## Overall Result
 
 - Questions tested: 20
-- Average total response time: 3.42 seconds
+- Average total response time: 3.60 seconds
 - Slowest response: 7.24 seconds
 - Latency target: all responses stayed below 10 seconds
 - Retrieval: relevant sections were found for all questions
