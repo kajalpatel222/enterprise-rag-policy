@@ -29,3 +29,15 @@ The current retrieval flow is intentionally simple:
 This approach improves exact-term retrieval without adding another LLM call or creating a
 second sparse Pinecone index. The initial performance goal is an end-to-end response under
 10 seconds, measured separately for retrieval and answer generation.
+
+## Run the chat interface
+
+From the project root:
+
+```bash
+source .venv/bin/activate
+streamlit run app.py
+```
+
+The browser interface uses the same retrieval baseline as the evaluation runner. Expand
+`Retrieved sources` below an answer to inspect the sections and response timing.
