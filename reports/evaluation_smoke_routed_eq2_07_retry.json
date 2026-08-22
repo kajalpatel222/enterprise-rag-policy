@@ -1,0 +1,54 @@
+[
+  {
+    "id": "EQ2-07",
+    "question": "What protections apply to a privileged administrator who works remotely?",
+    "route": "complex",
+    "route_reason": "complex phrase: protections",
+    "model": "google/gemini-3.7-flash",
+    "top_score": 0.41726991795714286,
+    "top_vector_score": 0.534875393,
+    "top_keyword_score": 0.14285714285714285,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.9537761239917018,
+    "answer_seconds": 8.980091734003508,
+    "total_seconds": 9.933944849006366,
+    "answer": "Based on the provided policies, the following protections and security requirements apply:\n\n**Information Security Policy**\n* **Privileged Access:** Privileged access (admin/root) requires Multi-Factor Authentication (MFA), follows the principle of least privilege, requires individual and auditable accounts (no shared/generic accounts), and is reviewed and recertified quarterly.\n* **Device and Data Encryption:** Laptops must have full-disk encryption enabled (BitLocker for Windows, FileVault for Mac), all data in transit must use TLS 1.2 or higher, and data at rest must be encrypted using AES-256.\n\n**Acceptable Use Policy**\n* **Security Controls:** Circumventing security controls (such as VPN bypass or disabling endpoint protection) is prohibited.\n* **Device Use:** Storing sensitive data on personal devices is prohibited.\n\n**Remote Work Policy**\n* Remote employees must maintain a safe, ergonomic, and distraction-free workspace, adhere to core working hours (10:00 AM \u2013 3:00 PM local time), and respond on Slack within 30 minutes during core hours.",
+    "retrieved": [
+      {
+        "score": 0.41726991795714286,
+        "vector_score": 0.534875393,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.33173506225714283,
+        "vector_score": 0.412682742,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.315578088,
+        "vector_score": 0.45082584,
+        "keyword_score": 0.0,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24585730399999997,
+        "vector_score": 0.35122472,
+        "keyword_score": 0.0,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2449006,
+        "vector_score": 0.349858,
+        "keyword_score": 0.0,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  }
+]

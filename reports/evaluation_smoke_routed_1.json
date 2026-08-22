@@ -1,0 +1,314 @@
+[
+  {
+    "id": "EQ2-04",
+    "question": "A developer receives HTTP 429 while using an OAuth access token. What does the error mean, how should they retry, and how long is the token valid?",
+    "route": "complex",
+    "route_reason": "complex phrase: how should",
+    "model": "google/gemini-3.7-flash",
+    "top_score": 0.4190627486,
+    "top_vector_score": 0.464732498,
+    "top_keyword_score": 0.3125,
+    "top_section": "ERROR CODES REFERENCE",
+    "retrieval_seconds": 1.2770057559973793,
+    "answer_seconds": 5.641479409998283,
+    "total_seconds": 6.918537148012547,
+    "answer": "According to the ERROR CODES REFERENCE and RATE LIMITING sections, an HTTP 429 error means the rate limit has been exceeded. Developers should not retry immediately; instead, they must check the `Retry-After` header to see how many seconds to wait (or refer to the `X-RateLimit-Reset` header) and implement exponential backoff with jitter for their retry logic.\n\nAccording to the API AUTHENTICATION section, an OAuth access token is valid for 3,600 seconds (1 hour).",
+    "retrieved": [
+      {
+        "score": 0.4190627486,
+        "vector_score": 0.464732498,
+        "keyword_score": 0.3125,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.40239798399999993,
+        "vector_score": 0.49449712,
+        "keyword_score": 0.1875,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3978037717,
+        "vector_score": 0.434362531,
+        "keyword_score": 0.3125,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.1999450562,
+        "vector_score": 0.232064366,
+        "keyword_score": 0.125,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.18383087239999998,
+        "vector_score": 0.262615532,
+        "keyword_score": 0.0,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-07",
+    "question": "What protections apply to a privileged administrator who works remotely?",
+    "route": "complex",
+    "route_reason": "complex phrase: protections",
+    "model": "google/gemini-3.7-flash",
+    "top_score": 0.41720762495714286,
+    "top_vector_score": 0.534786403,
+    "top_keyword_score": 0.14285714285714285,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.4699661909980932,
+    "answer_seconds": 9.21565820199612,
+    "total_seconds": 9.685670831007883,
+    "answer": "Based on ACME policies, the following protections and requirements apply to a privileged administrator working remotely:\n\n**Access and System Security** (*INFORMATION SECURITY POLICY*):\n* **Privileged Access Control:** Privileged access (admin/root) requires Multi-Factor Authentication (MFA). Access follows least privilege, requires individual and auditable accounts (no shared/generic accounts), and is reviewed and recertified quarterly.\n* **Endpoint & Data Encryption:** Laptops must have full-disk encryption enabled (BitLocker for Windows or FileVault for Mac). All data in transit must use TLS 1.2 or higher, and data at rest must be encrypted using AES-256.\n* **Password Standards:** Passwords must be at least 12 characters (including uppercase, lowercase, numbers, and special characters), expire every 90 days, and cannot reuse the last 12 passwords.\n\n**Usage and Remote Work Controls**:\n* **Security Controls & Devices** (*ACCEPTABLE USE POLICY*): Circumventing security controls (such as VPN bypass or disabling endpoint protection) and storing sensitive data on personal devices are strictly prohibited.\n* **Remote Work Conditions** (*REMOTE WORK POLICY*): Remote work requires manager agreement (up to 3 days per week after a 6-month probationary period; VP approval for fully remote), maintaining core hours (10:00 AM \u2013 3:00 PM local time), remaining reachable on Slack within 30 minutes during core hours, and obtaining HR/Legal approval before working outside the country of employment.",
+    "retrieved": [
+      {
+        "score": 0.41720762495714286,
+        "vector_score": 0.534786403,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3316842429571428,
+        "vector_score": 0.412610143,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.31559252409999994,
+        "vector_score": 0.450846463,
+        "keyword_score": 0.0,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24583425229999997,
+        "vector_score": 0.351191789,
+        "keyword_score": 0.0,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24492163989999996,
+        "vector_score": 0.349888057,
+        "keyword_score": 0.0,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-10",
+    "question": "A webhook endpoint returns a non-2xx response. How many times will delivery be retried, what backoff is used, and how should the signature be validated?",
+    "route": "complex",
+    "route_reason": "complex phrase: how should",
+    "model": "google/gemini-3.7-flash",
+    "top_score": 0.5954556057823529,
+    "top_vector_score": 0.548129857,
+    "top_keyword_score": 0.7058823529411765,
+    "top_section": "WEBHOOKS",
+    "retrieval_seconds": 0.430964982995647,
+    "answer_seconds": 4.148659066006076,
+    "total_seconds": 4.579679344009492,
+    "answer": "If an endpoint returns a non-2xx status code, webhook delivery is retried up to 5 times with exponential backoff. \n\nTo validate the signature, check the `X-ACME-Signature` header against your webhook secret using HMAC-SHA256 to ensure authenticity. Any unverified webhooks should be rejected.",
+    "retrieved": [
+      {
+        "score": 0.5954556057823529,
+        "vector_score": 0.548129857,
+        "keyword_score": 0.7058823529411765,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3441627126941176,
+        "vector_score": 0.390820682,
+        "keyword_score": 0.23529411764705882,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3031266007705882,
+        "vector_score": 0.357407749,
+        "keyword_score": 0.17647058823529413,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2400412588235294,
+        "vector_score": 0.317706,
+        "keyword_score": 0.058823529411764705,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2346024800470588,
+        "vector_score": 0.284726232,
+        "keyword_score": 0.11764705882352941,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-13",
+    "question": "What is the difference between `RTO` and `RPO` for Tier 1 systems?",
+    "route": "complex",
+    "route_reason": "complex phrase: difference",
+    "model": "google/gemini-3.7-flash",
+    "top_score": 0.5469207732999999,
+    "top_vector_score": 0.459886819,
+    "top_keyword_score": 0.75,
+    "top_section": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+    "retrieval_seconds": 0.4179279649979435,
+    "answer_seconds": 4.235165869991761,
+    "total_seconds": 4.653165879994049,
+    "answer": "For Tier 1 systems, the recovery objectives are:\n\n* **RTO (Recovery Time Objective):** 4 hours\n* **RPO (Recovery Point Objective):** 1 hour",
+    "retrieved": [
+      {
+        "score": 0.5469207732999999,
+        "vector_score": 0.459886819,
+        "keyword_score": 0.75,
+        "section_title": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2930107234,
+        "vector_score": 0.257872462,
+        "keyword_score": 0.375,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.27864580429999997,
+        "vector_score": 0.237351149,
+        "keyword_score": 0.375,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24813896599999996,
+        "vector_score": 0.24734138,
+        "keyword_score": 0.25,
+        "section_title": "PERFORMANCE REVIEW PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2345917386,
+        "vector_score": 0.227988198,
+        "keyword_score": 0.25,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-18",
+    "question": "What are the remote-work rules for an employee who has completed Day 90 but not the 6-month probationary period?",
+    "route": "complex",
+    "route_reason": "complex phrase: but not",
+    "model": "google/gemini-3.7-flash",
+    "top_score": 0.6198507905,
+    "top_vector_score": 0.671215415,
+    "top_keyword_score": 0.5,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.40923102298984304,
+    "answer_seconds": 5.40572526800679,
+    "total_seconds": 5.815006983000785,
+    "answer": "The policies contain conflicting rules regarding remote work eligibility and the length of the probationary period:\n\n- According to the **ONBOARDING PROCESS** section, the probationary period ends and remote work eligibility begins at Day 90.\n- According to the **REMOTE WORK POLICY** section, employees may work remotely up to 3 days per week only after completing their 6-month probationary period.\n\nBecause of this conflict, it cannot be determined whether an employee who has completed Day 90 but has not reached 6 months of employment is eligible for remote work.",
+    "retrieved": [
+      {
+        "score": 0.6198507905,
+        "vector_score": 0.671215415,
+        "keyword_score": 0.5,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.5241205570999999,
+        "vector_score": 0.561243653,
+        "keyword_score": 0.4375,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31732523469999996,
+        "vector_score": 0.372964621,
+        "keyword_score": 0.1875,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2821751267,
+        "vector_score": 0.322750181,
+        "keyword_score": 0.1875,
+        "section_title": "SICK LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2585543218,
+        "vector_score": 0.289006174,
+        "keyword_score": 0.1875,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-19",
+    "question": "Does ACME provide a home-office equipment stipend?",
+    "route": "standard",
+    "route_reason": "simple lookup or unsupported question",
+    "model": "openai/gpt-4.1-mini",
+    "top_score": 0.44613402499999993,
+    "top_vector_score": 0.56590575,
+    "top_keyword_score": 0.16666666666666666,
+    "top_section": "COMPENSATION AND BENEFITS",
+    "retrieval_seconds": 0.5438481980090728,
+    "answer_seconds": 0.7225762180023594,
+    "total_seconds": 1.2664776950114174,
+    "answer": "ACME policy does not mention providing a home-office equipment stipend.",
+    "retrieved": [
+      {
+        "score": 0.44613402499999993,
+        "vector_score": 0.56590575,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3702948812,
+        "vector_score": 0.457564116,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3408480288,
+        "vector_score": 0.415497184,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "CODE OF CONDUCT",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31842376259999994,
+        "vector_score": 0.383462518,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "GRIEVANCE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3169053289,
+        "vector_score": 0.381293327,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  }
+]

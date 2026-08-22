@@ -21,6 +21,21 @@ STOP_WORDS = {
     "must", "of", "the", "to", "what", "when", "with",
 }
 
+# These phrases usually indicate that the model must combine, compare, or reconcile
+# several policy facts. Routing them does not require another paid LLM call.
+COMPLEX_QUESTION_MARKERS = {
+    "but not",
+    "compare",
+    "difference",
+    "how should",
+    "process",
+    "protections",
+    "requirements",
+    "safeguards",
+    "steps",
+    "what must",
+}
+
 
 class EvidenceFact(BaseModel):
     """One policy fact that is directly useful for answering the question."""
@@ -61,8 +76,18 @@ def keyword_score(question: str, text: str) -> float:
     return len(question_terms & text_terms) / len(question_terms)
 
 
-def create_components() -> tuple[PineconeVectorStore, ChatOpenAI]:
-    """Create the Pinecone and chat-model clients from the local .env file."""
+def create_chat_model(model_name: str) -> ChatOpenAI:
+    """Create one OpenRouter chat client for a specific model."""
+    return ChatOpenAI(
+        model=model_name,
+        api_key=os.environ["OPENROUTER_API_KEY"],
+        base_url=os.environ["OPENROUTER_BASE_URL"],
+        temperature=0,
+    )
+
+
+def create_components() -> tuple[PineconeVectorStore, ChatOpenAI, ChatOpenAI]:
+    """Create Pinecone plus the standard and complex-question chat clients."""
     load_dotenv(PROJECT_ROOT / ".env")
 
     # The same embedding model used during indexing must be used for questions.
@@ -77,13 +102,30 @@ def create_components() -> tuple[PineconeVectorStore, ChatOpenAI]:
         embedding=embeddings,
         pinecone_api_key=os.environ["PINECONE_API_KEY"],
     )
-    chat = ChatOpenAI(
-        model=os.environ["CHAT_MODEL"],
-        api_key=os.environ["OPENROUTER_API_KEY"],
-        base_url=os.environ["OPENROUTER_BASE_URL"],
-        temperature=0,
+    standard_chat = create_chat_model(os.environ["CHAT_MODEL"])
+    complex_chat = create_chat_model(os.environ["COMPLEX_CHAT_MODEL"])
+    return vector_store, standard_chat, complex_chat
+
+
+def select_answer_model(
+    question: str,
+    standard_chat: ChatOpenAI,
+    complex_chat: ChatOpenAI,
+) -> tuple[ChatOpenAI, str, str]:
+    """Choose a model using simple, visible rules instead of a classifier call."""
+    normalized = question.lower()
+    matched_markers = sorted(
+        marker for marker in COMPLEX_QUESTION_MARKERS if marker in normalized
     )
-    return vector_store, chat
+
+    # Several clauses joined by commas and "and" usually form a multi-part request.
+    is_multi_part = normalized.count(",") >= 1 and " and " in normalized
+    if matched_markers:
+        reason = f"complex phrase: {', '.join(matched_markers)}"
+        return complex_chat, "complex", reason
+    if is_multi_part:
+        return complex_chat, "complex", "multiple requested parts"
+    return standard_chat, "standard", "simple lookup or unsupported question"
 
 
 def retrieve(
@@ -135,7 +177,7 @@ Writing rules:
 - Use one or two short paragraphs for simple questions.
 - Use bullets only for steps, comparisons, or multiple requirements.
 - For multiple policies, cite each relevant section once and state duplicate facts once.
-- For scenarios, include only controls that affect the answer.
+- For scenarios, prioritize rules triggered by the stated role or situation; omit general rules.
 - Answer only what was requested; omit related facts from the same section unless needed.
 
 Faithfulness rules:

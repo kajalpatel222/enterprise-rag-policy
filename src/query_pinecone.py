@@ -39,7 +39,7 @@ def main() -> None:
     args = parser.parse_args()
 
     # This shared function creates the Pinecone client and embedding model.
-    vector_store, _chat = create_components()
+    vector_store, _standard_chat, _complex_chat = create_components()
     results = retrieve(
         vector_store,
         args.question,

@@ -24,7 +24,7 @@ def main() -> None:
     # Read the question and retrieved chunks produced by query_pinecone.py.
     retrieval = json.loads(RETRIEVAL_PATH.read_text(encoding="utf-8"))
     question = retrieval["question"]
-    _vector_store, chat = create_components()
+    _vector_store, chat, _complex_chat = create_components()
 
     # The shared function builds the grounded prompt and calls the chat model.
     answer, _answer_seconds = answer_question(chat, question, retrieval["results"])

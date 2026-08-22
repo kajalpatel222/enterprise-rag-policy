@@ -46,7 +46,7 @@ QUESTIONS = [
 
 
 def main() -> None:
-    vector_store, chat = create_components()
+    vector_store, chat, _complex_chat = create_components()
     results: list[dict[str, object]] = []
 
     for item in QUESTIONS:

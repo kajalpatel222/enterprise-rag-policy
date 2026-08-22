@@ -6,7 +6,12 @@ import time
 
 import streamlit as st
 
-from src.rag_pipeline import answer_question, create_components, retrieve
+from src.rag_pipeline import (
+    answer_question,
+    create_components,
+    retrieve,
+    select_answer_model,
+)
 
 
 st.set_page_config(page_title="ACME Policy Assistant")
@@ -37,6 +42,10 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
         if message["role"] == "assistant" and message.get("sources"):
             with st.expander("Retrieved sources"):
+                st.caption(
+                    f"Answer route: {message.get('route', 'standard')} · "
+                    f"{message.get('route_reason', 'answered before routing was enabled')}"
+                )
                 for source in message["sources"]:
                     st.markdown(
                         f"**{source['section']}**  \n"
@@ -55,7 +64,12 @@ if question:
 
     with st.chat_message("assistant"):
         try:
-            vector_store, chat = load_pipeline()
+            vector_store, standard_chat, complex_chat = load_pipeline()
+            chat, route, route_reason = select_answer_model(
+                question,
+                standard_chat,
+                complex_chat,
+            )
             retrieval_start = time.perf_counter()
             retrieved = retrieve(vector_store, question)
             retrieval_seconds = time.perf_counter() - retrieval_start
@@ -71,6 +85,7 @@ if question:
                 for item in retrieved
             ]
             with st.expander("Retrieved sources"):
+                st.caption(f"Answer route: {route} · {route_reason}")
                 for source in sources:
                     st.markdown(
                         f"**{source['section']}**  \n"
@@ -88,6 +103,8 @@ if question:
                     "sources": sources,
                     "retrieval_seconds": retrieval_seconds,
                     "answer_seconds": answer_seconds,
+                    "route": route,
+                    "route_reason": route_reason,
                 }
             )
         except Exception as error:
