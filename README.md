@@ -16,3 +16,16 @@ Build a Python and Streamlit application that answers questions from a curated e
 - `reports/` - Evaluation results and project-submission material.
 
 We will choose the corpus, retrieval strategy, and dependencies before adding application code.
+
+## Current Retrieval Baseline
+
+The current retrieval flow is intentionally simple:
+
+1. Pinecone retrieves the top 10 candidates using dense semantic search.
+2. Local keyword overlap scoring reranks those candidates.
+3. The best 5 chunks are sent to the answer model.
+4. The answer model must stay within the retrieved policy context.
+
+This approach improves exact-term retrieval without adding another LLM call or creating a
+second sparse Pinecone index. The initial performance goal is an end-to-end response under
+10 seconds, measured separately for retrieval and answer generation.

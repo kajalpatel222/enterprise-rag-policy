@@ -6,6 +6,7 @@ import json
 import logging
 import os
 import argparse
+import re
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -19,6 +20,38 @@ OUTPUT_PATH = PROJECT_ROOT / "data" / "processed" / "preview" / "retrieval_resul
 logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
 logger = logging.getLogger(__name__)
 
+STOP_WORDS = {
+    "a",
+    "an",
+    "and",
+    "are",
+    "by",
+    "can",
+    "does",
+    "how",
+    "is",
+    "must",
+    "of",
+    "the",
+    "to",
+    "what",
+    "when",
+    "with",
+}
+
+
+def keyword_score(question: str, text: str) -> float:
+    """Measure how many meaningful question terms appear in a chunk."""
+    question_terms = {
+        word
+        for word in re.findall(r"\b[a-z0-9]+\b", question.lower())
+        if word not in STOP_WORDS
+    }
+    text_terms = set(re.findall(r"\b[a-z0-9]+\b", text.lower()))
+    if not question_terms:
+        return 0.0
+    return len(question_terms & text_terms) / len(question_terms)
+
 
 def main() -> None:
     # Read the question from the terminal instead of hardcoding it in the file.
@@ -27,8 +60,14 @@ def main() -> None:
     parser.add_argument(
         "--top-k",
         type=int,
-        default=3,
-        help="How many candidate chunks to retrieve (default: 3)",
+        default=5,
+        help="How many chunks to return after hybrid ranking (default: 5)",
+    )
+    parser.add_argument(
+        "--candidate-k",
+        type=int,
+        default=10,
+        help="How many semantic candidates to retrieve first (default: 10)",
     )
     args = parser.parse_args()
     question = args.question
@@ -52,16 +91,27 @@ def main() -> None:
         pinecone_api_key=os.environ["PINECONE_API_KEY"],
     )
 
-    logger.info("Searching Pinecone for the top %d matches", args.top_k)
-    # Retrieve the chunks whose meanings are closest to the question.
-    matches = vector_store.similarity_search_with_score(question, k=args.top_k)
+    logger.info("Searching Pinecone for %d semantic candidates", args.candidate_k)
+    # First retrieve a broad semantic shortlist from Pinecone.
+    matches = vector_store.similarity_search_with_score(question, k=args.candidate_k)
+    scored_matches = []
+    for document, vector_score in matches:
+        lexical_score = keyword_score(question, document.page_content)
+        # Combine meaning similarity with exact term overlap locally.
+        hybrid_score = (0.7 * vector_score) + (0.3 * lexical_score)
+        scored_matches.append((document, vector_score, lexical_score, hybrid_score))
+    scored_matches.sort(key=lambda item: item[3], reverse=True)
+    selected_matches = scored_matches[: args.top_k]
+    logger.info("Selected top %d chunks after hybrid ranking", len(selected_matches))
     results = [
         {
-            "score": score,
+            "score": hybrid_score,
+            "vector_score": vector_score,
+            "keyword_score": lexical_score,
             "text": document.page_content,
             "metadata": document.metadata,
         }
-        for document, score in matches
+        for document, vector_score, lexical_score, hybrid_score in selected_matches
     ]
     # Save retrieval results so we can inspect them before asking the chat model.
     OUTPUT_PATH.write_text(
