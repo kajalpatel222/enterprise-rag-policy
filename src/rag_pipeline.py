@@ -115,6 +115,10 @@ For scenario questions, include the controls needed to resolve that scenario and
 nearby policy details that do not change the answer.
 Preserve conditional wording exactly: do not turn "if applicable", "if involved", or
 similar conditions into unconditional requirements.
+Do not add urgency words such as "immediately" or "promptly", or new deadlines, unless
+the policy context explicitly states them.
+Only apply a conditional rule when the scenario satisfies its condition. Otherwise, state
+the condition explicitly or leave that rule out.
 Do not add facts, deadlines, obligations, or interpretations that are not directly stated
 in the context. For a direct question, answer only what was asked. For a multi-part or
 process question, include every relevant action, deadline, notification requirement,
