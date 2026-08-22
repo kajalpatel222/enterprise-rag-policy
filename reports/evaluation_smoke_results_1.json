@@ -1,0 +1,247 @@
+[
+  {
+    "id": "EQ2-07",
+    "question": "What protections apply to a privileged administrator who works remotely?",
+    "top_score": 0.41720762495714286,
+    "top_vector_score": 0.534786403,
+    "top_keyword_score": 0.14285714285714285,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 1.1208543879911304,
+    "answer_seconds": 6.331538001002627,
+    "total_seconds": 7.4524222549953265,
+    "answer": "No separate protection is specified for remote privileged administrators. The following safeguards apply:\n\n- Privileged admin/root access requires MFA, follows least privilege, is reviewed and recertified quarterly, and must use individual, auditable accounts rather than shared accounts.\n- Data in transit must use TLS 1.2 or higher; data at rest must use AES-256; and the laptop must have full-disk encryption enabled. (Information Security Policy)\n- Sensitive data cannot be stored on personal devices, and security controls such as VPN or endpoint protection cannot be bypassed or disabled. (Acceptable Use Policy)\n- The remote workspace must be safe, ergonomic, and distraction-free. Working outside the employee\u2019s country of employment requires prior written approval from HR and Legal. (Remote Work Policy)",
+    "retrieved": [
+      {
+        "score": 0.41720762495714286,
+        "vector_score": 0.534786403,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3316842429571428,
+        "vector_score": 0.412610143,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.31559252409999994,
+        "vector_score": 0.450846463,
+        "keyword_score": 0.0,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24583425229999997,
+        "vector_score": 0.351191789,
+        "keyword_score": 0.0,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24492163989999996,
+        "vector_score": 0.349888057,
+        "keyword_score": 0.0,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-10",
+    "question": "A webhook endpoint returns a non-2xx response. How many times will delivery be retried, what backoff is used, and how should the signature be validated?",
+    "top_score": 0.5954556057823529,
+    "top_vector_score": 0.548129857,
+    "top_keyword_score": 0.7058823529411765,
+    "top_section": "WEBHOOKS",
+    "retrieval_seconds": 0.4618652689969167,
+    "answer_seconds": 1.7537513629940804,
+    "total_seconds": 2.215647261007689,
+    "answer": "Delivery is retried up to 5 times using exponential backoff after a non-2xx response. Validate the `X-ACME-Signature` header against your webhook secret using HMAC-SHA256, and reject any webhook that cannot be verified. (WEBHOOKS)",
+    "retrieved": [
+      {
+        "score": 0.5954556057823529,
+        "vector_score": 0.548129857,
+        "keyword_score": 0.7058823529411765,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3441627126941176,
+        "vector_score": 0.390820682,
+        "keyword_score": 0.23529411764705882,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3031266007705882,
+        "vector_score": 0.357407749,
+        "keyword_score": 0.17647058823529413,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2400412588235294,
+        "vector_score": 0.317706,
+        "keyword_score": 0.058823529411764705,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2346024800470588,
+        "vector_score": 0.284726232,
+        "keyword_score": 0.11764705882352941,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-13",
+    "question": "What is the difference between `RTO` and `RPO` for Tier 1 systems?",
+    "top_score": 0.5468564153,
+    "top_vector_score": 0.459794879,
+    "top_keyword_score": 0.75,
+    "top_section": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+    "retrieval_seconds": 0.5081817099999171,
+    "answer_seconds": 2.010998641999322,
+    "total_seconds": 2.5192003629927058,
+    "answer": "For Tier 1 systems:\n\n- **RTO (Recovery Time Objective): 4 hours** \u2014 the target time to restore the system after a disruption.\n- **RPO (Recovery Point Objective): 1 hour** \u2014 the target maximum amount of data loss measured in time.\n\nSo, Tier 1 systems should be restored within 4 hours, with no more than 1 hour of data loss. [BUSINESS CONTINUITY AND DISASTER RECOVERY]",
+    "retrieved": [
+      {
+        "score": 0.5468564153,
+        "vector_score": 0.459794879,
+        "keyword_score": 0.75,
+        "section_title": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2929017425,
+        "vector_score": 0.257716775,
+        "keyword_score": 0.375,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.27859924169999994,
+        "vector_score": 0.237284631,
+        "keyword_score": 0.375,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2480198246,
+        "vector_score": 0.247171178,
+        "keyword_score": 0.25,
+        "section_title": "PERFORMANCE REVIEW PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.23452827799999998,
+        "vector_score": 0.22789754,
+        "keyword_score": 0.25,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-18",
+    "question": "What are the remote-work rules for an employee who has completed Day 90 but not the 6-month probationary period?",
+    "top_score": 0.6198507905,
+    "top_vector_score": 0.671215415,
+    "top_keyword_score": 0.5,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.39095737000752706,
+    "answer_seconds": 3.897583363999729,
+    "total_seconds": 4.288564447997487,
+    "answer": "The policies conflict. The **Onboarding Process** says probation ends and remote-work eligibility begins on Day 90, while the **Remote Work Policy** permits remote work only after completing a 6-month probationary period. Therefore, eligibility between Day 90 and six months cannot be determined from the policy context and requires clarification.",
+    "retrieved": [
+      {
+        "score": 0.6198507905,
+        "vector_score": 0.671215415,
+        "keyword_score": 0.5,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.5241205570999999,
+        "vector_score": 0.561243653,
+        "keyword_score": 0.4375,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31732523469999996,
+        "vector_score": 0.372964621,
+        "keyword_score": 0.1875,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2821751267,
+        "vector_score": 0.322750181,
+        "keyword_score": 0.1875,
+        "section_title": "SICK LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2585543218,
+        "vector_score": 0.289006174,
+        "keyword_score": 0.1875,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-19",
+    "question": "Does ACME provide a home-office equipment stipend?",
+    "top_score": 0.4460739019999999,
+    "top_vector_score": 0.56581986,
+    "top_keyword_score": 0.16666666666666666,
+    "top_section": "COMPENSATION AND BENEFITS",
+    "retrieval_seconds": 0.4064404100063257,
+    "answer_seconds": 1.3462352269998519,
+    "total_seconds": 1.7527340649976395,
+    "answer": "The provided policy context does not state that ACME offers a home-office equipment stipend.",
+    "retrieved": [
+      {
+        "score": 0.4460739019999999,
+        "vector_score": 0.56581986,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3702784837,
+        "vector_score": 0.457540691,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.34085386959999997,
+        "vector_score": 0.415505528,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "CODE OF CONDUCT",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3184153976,
+        "vector_score": 0.383450568,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "GRIEVANCE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31696286469999996,
+        "vector_score": 0.381375521,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  }
+]

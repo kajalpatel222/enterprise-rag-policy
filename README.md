@@ -60,3 +60,12 @@ python tests/run_evaluation.py \
 
 The evaluation questions live in `evals/`, and each run is saved separately in `reports/`.
 This keeps experiments from overwriting earlier results.
+
+For a cheaper focused check, run only selected question IDs:
+
+```bash
+python tests/run_evaluation.py \
+  --eval-file evals/evaluation_smoke.md \
+  --ids EQ2-04,EQ2-18 \
+  --output reports/evaluation_smoke_results.json
+```

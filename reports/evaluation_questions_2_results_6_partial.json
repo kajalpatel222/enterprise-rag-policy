@@ -1,0 +1,296 @@
+[
+  {
+    "id": "EQ2-01",
+    "question": "A new employee is starting today. What happens on Day 1, and what security principle should govern their system access?",
+    "top_score": 0.46903389560000003,
+    "top_vector_score": 0.555762708,
+    "top_keyword_score": 0.26666666666666666,
+    "top_section": "ONBOARDING PROCESS",
+    "retrieval_seconds": 1.1686072340089595,
+    "answer_seconds": 1.5354195409890963,
+    "total_seconds": 2.7041155580081977,
+    "answer": "On Day 1, the new employee completes IT setup, security training, and HR orientation. Their system access must follow the principle of least privilege. (ONBOARDING PROCESS; INFORMATION SECURITY POLICY)",
+    "retrieved": [
+      {
+        "score": 0.46903389560000003,
+        "vector_score": 0.555762708,
+        "keyword_score": 0.26666666666666666,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.39692673079999996,
+        "vector_score": 0.424181044,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3794285247,
+        "vector_score": 0.313469321,
+        "keyword_score": 0.5333333333333333,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.33833520689999996,
+        "vector_score": 0.340478867,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.318926947,
+        "vector_score": 0.34132421,
+        "keyword_score": 0.26666666666666666,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-02",
+    "question": "An employee wants to work remotely from outside their country while handling personal data. What approval and data-transfer safeguards apply?",
+    "top_score": 0.5309131326,
+    "top_vector_score": 0.544161618,
+    "top_keyword_score": 0.5,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.4123234050057363,
+    "answer_seconds": 11.160741832994972,
+    "total_seconds": 11.573094920997391,
+    "answer": "- Prior written approval from both HR and Legal is required before working remotely outside the employee\u2019s country of employment. If the arrangement is fully remote five days per week, VP-level approval is also required. *(Remote Work Policy)*\n- If the work involves a cross-border transfer of personal data, the DPO must approve it at **dpo@acme.com**. Transfers outside the EEA must use SCCs, an adequacy decision, or BCRs. *(Data Privacy and GDPR Compliance)*\n- Data must use TLS 1.2 or higher in transit and AES-256 at rest, and laptops must have full-disk encryption enabled. *(Information Security Policy)*\n\nThe policy does not specify whether remote access from another country automatically counts as a cross-border data transfer.",
+    "retrieved": [
+      {
+        "score": 0.5309131326,
+        "vector_score": 0.544161618,
+        "keyword_score": 0.5,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.49102569999999995,
+        "vector_score": 0.540751,
+        "keyword_score": 0.375,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.37125511469999994,
+        "vector_score": 0.476793021,
+        "keyword_score": 0.125,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.34147982599999993,
+        "vector_score": 0.40747118,
+        "keyword_score": 0.1875,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3243932696,
+        "vector_score": 0.409847528,
+        "keyword_score": 0.125,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-03",
+    "question": "A P1 incident involves personal data exposed through an API. What are the response, containment, regulatory-notification, and reporting requirements?",
+    "top_score": 0.6151097981571428,
+    "top_vector_score": 0.603218079,
+    "top_keyword_score": 0.6428571428571429,
+    "top_section": "INCIDENT RESPONSE POLICY",
+    "retrieval_seconds": 0.374695808000979,
+    "answer_seconds": 5.994281973995385,
+    "total_seconds": 6.369005208005547,
+    "answer": "- **Response:** Engage the incident response team and acknowledge the P1 incident within **15 minutes**, following ACME\u2019s NIST SP 800-61-based process. *(Incident Response Policy; SLA and Uptime)*\n- **Containment:** Contain the incident within **1 hour**. *(Incident Response Policy)*\n- **Regulatory notification:** Notify the GDPR supervisory authority within **72 hours** because personal data is involved. Notify affected individuals **without undue delay if the risk is high**. State notification deadlines vary by jurisdiction from **14\u201390 days**. SEC/FinCEN notification within **30 days** applies only if financial data is also involved. *(Incident Response Policy)*\n- **Reporting:** Report the incident to **security@acme.com** or the 24/7 Security Hotline at **1-800-555-CERT**. *(Incident Response Policy)*",
+    "retrieved": [
+      {
+        "score": 0.6151097981571428,
+        "vector_score": 0.603218079,
+        "keyword_score": 0.6428571428571429,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.35324672578571426,
+        "vector_score": 0.412801445,
+        "keyword_score": 0.21428571428571427,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3304024210142857,
+        "vector_score": 0.349554479,
+        "keyword_score": 0.2857142857142857,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.31738166928571426,
+        "vector_score": 0.36156565,
+        "keyword_score": 0.21428571428571427,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.30633732625714283,
+        "vector_score": 0.376400262,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-04",
+    "question": "A developer receives HTTP 429 while using an OAuth access token. What does the error mean, how should they retry, and how long is the token valid?",
+    "top_score": 0.4190627486,
+    "top_vector_score": 0.464732498,
+    "top_keyword_score": 0.3125,
+    "top_section": "ERROR CODES REFERENCE",
+    "retrieval_seconds": 0.4217794049909571,
+    "answer_seconds": 2.8855467419925844,
+    "total_seconds": 3.307354005999514,
+    "answer": "HTTP 429 means the API rate limit has been exceeded. Do not retry immediately. Wait for the number of seconds specified in the `Retry-After` header\u2014or until the Unix timestamp in `X-RateLimit-Reset`\u2014then retry using exponential backoff with jitter. (ERROR CODES REFERENCE; RATE LIMITING)\n\nThe OAuth access token is valid for 3,600 seconds (1 hour). Use the refresh token to obtain a new access token before it expires. (API AUTHENTICATION)",
+    "retrieved": [
+      {
+        "score": 0.4190627486,
+        "vector_score": 0.464732498,
+        "keyword_score": 0.3125,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.40239798399999993,
+        "vector_score": 0.49449712,
+        "keyword_score": 0.1875,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3978037717,
+        "vector_score": 0.434362531,
+        "keyword_score": 0.3125,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.1999450562,
+        "vector_score": 0.232064366,
+        "keyword_score": 0.125,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.18383087239999998,
+        "vector_score": 0.262615532,
+        "keyword_score": 0.0,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-05",
+    "question": "When an employee leaves ACME, what must happen to system access, and how long should employee personal data be retained afterward?",
+    "top_score": 0.6191689306153846,
+    "top_vector_score": 0.62079078,
+    "top_keyword_score": 0.6153846153846154,
+    "top_section": "DATA PRIVACY AND GDPR COMPLIANCE",
+    "retrieval_seconds": 0.3295778470055666,
+    "answer_seconds": 2.2564894639945123,
+    "total_seconds": 2.586093568999786,
+    "answer": "System access must be revoked within 2 hours of HR notification of the employee\u2019s termination. Employee personal data must be retained for 3 years after employment ends. (Information Security Policy; Data Privacy and GDPR Compliance)",
+    "retrieved": [
+      {
+        "score": 0.6191689306153846,
+        "vector_score": 0.62079078,
+        "keyword_score": 0.6153846153846154,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.49463131538461536,
+        "vector_score": 0.541781,
+        "keyword_score": 0.38461538461538464,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.46522708948461533,
+        "vector_score": 0.499774963,
+        "keyword_score": 0.38461538461538464,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.4446817437307692,
+        "vector_score": 0.536358535,
+        "keyword_score": 0.23076923076923078,
+        "section_title": "DISCIPLINARY POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.4329596382307692,
+        "vector_score": 0.51961267,
+        "keyword_score": 0.23076923076923078,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-06",
+    "question": "What steps are required before approving a high-risk vendor that handles personal data and transfers it outside the EEA?",
+    "top_score": 0.5578385866,
+    "top_vector_score": 0.568340838,
+    "top_keyword_score": 0.5333333333333333,
+    "top_section": "THIRD-PARTY VENDOR MANAGEMENT",
+    "retrieval_seconds": 0.48685374700289685,
+    "answer_seconds": 3.0259861280064797,
+    "total_seconds": 3.5128603799967095,
+    "answer": "Before engagement and approval, the following steps are required:\n\n- The business owner submits a Vendor Request Form in ServiceNow.\n- Procurement reviews commercial terms and pricing, including SLA, insurance, and liability.\n- Security conducts a standardized assessment using SIG Lite or CAIQ, depending on criticality.\n- Legal reviews the data processing agreement (DPA) and contract terms.\n- The DPO reviews and approves the DPA because the vendor handles personal data.\n- The transfer must use an approved mechanism\u2014Standard Contractual Clauses (SCCs), an adequacy decision, or Binding Corporate Rules (BCRs)\u2014and the DPO must approve the cross-border transfer. Contact: dpo@acme.com.\n- The CISO signs off because the vendor is classified as High risk.\n- After approval, the vendor is onboarded and added to the Approved Vendor Registry.\n\n(THIRD-PARTY VENDOR MANAGEMENT; DATA PRIVACY AND GDPR COMPLIANCE)",
+    "retrieved": [
+      {
+        "score": 0.5578385866,
+        "vector_score": 0.568340838,
+        "keyword_score": 0.5333333333333333,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.4742664541999999,
+        "vector_score": 0.477523506,
+        "keyword_score": 0.4666666666666667,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3231253699,
+        "vector_score": 0.347321957,
+        "keyword_score": 0.26666666666666666,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2858713247,
+        "vector_score": 0.322673321,
+        "keyword_score": 0.2,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.28249073869999997,
+        "vector_score": 0.346415341,
+        "keyword_score": 0.13333333333333333,
+        "section_title": "AUDIT AND COMPLIANCE MONITORING",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  }
+]

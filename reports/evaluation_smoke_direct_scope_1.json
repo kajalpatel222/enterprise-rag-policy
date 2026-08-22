@@ -1,0 +1,51 @@
+[
+  {
+    "id": "EQ2-04",
+    "question": "A developer receives HTTP 429 while using an OAuth access token. What does the error mean, how should they retry, and how long is the token valid?",
+    "top_score": 0.4190627486,
+    "top_vector_score": 0.464732498,
+    "top_keyword_score": 0.3125,
+    "top_section": "ERROR CODES REFERENCE",
+    "retrieval_seconds": 1.1037302729964722,
+    "answer_seconds": 1.9493776460003573,
+    "total_seconds": 3.0531576659996063,
+    "answer": "HTTP 429 means the API rate limit has been exceeded. Do not retry immediately: wait for the number of seconds specified in the `Retry-After` header, and use exponential backoff with jitter. The `X-RateLimit-Reset` header also shows the Unix timestamp when the limit resets. (ERROR CODES REFERENCE; RATE LIMITING)\n\nThe OAuth access token is valid for 3,600 seconds (1 hour). (API AUTHENTICATION)",
+    "retrieved": [
+      {
+        "score": 0.4190627486,
+        "vector_score": 0.464732498,
+        "keyword_score": 0.3125,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.40239798399999993,
+        "vector_score": 0.49449712,
+        "keyword_score": 0.1875,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3978037717,
+        "vector_score": 0.434362531,
+        "keyword_score": 0.3125,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.1999450562,
+        "vector_score": 0.232064366,
+        "keyword_score": 0.125,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.18383087239999998,
+        "vector_score": 0.262615532,
+        "keyword_score": 0.0,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  }
+]

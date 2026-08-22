@@ -109,6 +109,7 @@ Writing rules:
 - Use bullets only for steps, comparisons, or multiple requirements.
 - For multiple policies, cite each relevant section once and state duplicate facts once.
 - For scenarios, include only controls that affect the answer.
+- Answer only what was requested; omit related facts from the same section unless needed.
 
 Faithfulness rules:
 - Do not invent facts, deadlines, obligations, urgency, or interpretations.

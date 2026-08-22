@@ -42,11 +42,22 @@ def main() -> None:
         default="reports/evaluation_results_4.json",
         help="Output JSON file relative to the project root",
     )
+    parser.add_argument(
+        "--ids",
+        help="Optional comma-separated question IDs, for example EQ2-04,EQ2-18",
+    )
     args = parser.parse_args()
     eval_path = PROJECT_ROOT / args.eval_file
     output_path = PROJECT_ROOT / args.output
     output_path.parent.mkdir(parents=True, exist_ok=True)
     questions = load_questions(eval_path)
+    if args.ids:
+        # Running only selected IDs keeps focused checks faster and less expensive.
+        selected_ids = {question_id.strip() for question_id in args.ids.split(",")}
+        questions = [item for item in questions if item["id"] in selected_ids]
+        missing_ids = selected_ids - {item["id"] for item in questions}
+        if missing_ids:
+            raise ValueError(f"Question IDs not found: {', '.join(sorted(missing_ids))}")
     vector_store, chat = create_components()
     results: list[dict[str, object]] = []
 
