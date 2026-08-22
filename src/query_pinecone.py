@@ -24,11 +24,18 @@ def main() -> None:
     # Read the question from the terminal instead of hardcoding it in the file.
     parser = argparse.ArgumentParser(description="Retrieve policy chunks for a question")
     parser.add_argument("--question", required=True, help="The employee question")
+    parser.add_argument(
+        "--top-k",
+        type=int,
+        default=3,
+        help="How many candidate chunks to retrieve (default: 3)",
+    )
     args = parser.parse_args()
     question = args.question
     # Load credentials and model settings without printing secret values.
     load_dotenv(PROJECT_ROOT / ".env")
     logger.info("Question: %s", question)
+
     logger.info("Embedding the question with %s", os.environ["EMBEDDING_MODEL"])
 
     # The question must use the same embedding model as the indexed documents.
@@ -45,9 +52,9 @@ def main() -> None:
         pinecone_api_key=os.environ["PINECONE_API_KEY"],
     )
 
-    logger.info("Searching Pinecone for the top 3 matches")
-    # Retrieve the three chunks whose meanings are closest to the question.
-    matches = vector_store.similarity_search_with_score(question, k=3)
+    logger.info("Searching Pinecone for the top %d matches", args.top_k)
+    # Retrieve the chunks whose meanings are closest to the question.
+    matches = vector_store.similarity_search_with_score(question, k=args.top_k)
     results = [
         {
             "score": score,
@@ -58,7 +65,10 @@ def main() -> None:
     ]
     # Save retrieval results so we can inspect them before asking the chat model.
     OUTPUT_PATH.write_text(
-        json.dumps({"question": question, "results": results}, indent=2),
+        json.dumps(
+            {"question": question, "results": results},
+            indent=2,
+        ),
         encoding="utf-8",
     )
 
