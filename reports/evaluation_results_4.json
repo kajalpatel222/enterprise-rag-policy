@@ -1,0 +1,787 @@
+[
+  {
+    "id": "EQ-01",
+    "question": "How many paid annual-leave days do full-time employees receive?",
+    "top_score": 0.7321273769999999,
+    "top_vector_score": 0.70303911,
+    "top_keyword_score": 0.8,
+    "top_section": "ANNUAL LEAVE POLICY",
+    "retrieval_seconds": 1.309207904007053,
+    "answer_seconds": 2.0899294319970068,
+    "total_seconds": 3.3991927309980383,
+    "answer": "Full-time employees receive **15 days of paid annual leave per calendar year**. *(ANNUAL LEAVE POLICY)*",
+    "retrieved": [
+      {
+        "score": 0.7321273769999999,
+        "vector_score": 0.70303911,
+        "keyword_score": 0.8,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.5012400340000001,
+        "vector_score": 0.54462862,
+        "keyword_score": 0.4,
+        "section_title": "SICK LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.4416367617,
+        "vector_score": 0.502338231,
+        "keyword_score": 0.3,
+        "section_title": "MATERNITY AND PATERNITY LEAVE",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3711618942,
+        "vector_score": 0.358802706,
+        "keyword_score": 0.4,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3482657161,
+        "vector_score": 0.368951023,
+        "keyword_score": 0.3,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-02",
+    "question": "How many remote-work days are allowed each week?",
+    "top_score": 0.6280713244285714,
+    "top_vector_score": 0.65234679,
+    "top_keyword_score": 0.5714285714285714,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.41614219499751925,
+    "answer_seconds": 2.078907471994171,
+    "total_seconds": 2.4950648679950973,
+    "answer": "Employees may work remotely up to **3 days per week** after completing the 6-month probationary period. Remote-work days must be agreed upon with the direct manager in advance. **(REMOTE WORK POLICY)**",
+    "retrieved": [
+      {
+        "score": 0.6280713244285714,
+        "vector_score": 0.65234679,
+        "keyword_score": 0.5714285714285714,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.37781561817142856,
+        "vector_score": 0.356063128,
+        "keyword_score": 0.42857142857142855,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3138599658571429,
+        "vector_score": 0.38714689,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.27186152895714283,
+        "vector_score": 0.327149123,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "SICK LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.24244755499999998,
+        "vector_score": 0.34635365,
+        "keyword_score": 0.0,
+        "section_title": "MATERNITY AND PATERNITY LEAVE",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-03",
+    "question": "What benefits are available through the employee assistance program?",
+    "top_score": 0.6366367701,
+    "top_vector_score": 0.552338243,
+    "top_keyword_score": 0.8333333333333334,
+    "top_section": "COMPENSATION AND BENEFITS",
+    "retrieval_seconds": 0.3614236599969445,
+    "answer_seconds": 1.573114026003168,
+    "total_seconds": 1.9345556589978514,
+    "answer": "All employees receive **6 free counseling sessions per year** through the Employee Assistance Program. Contact **eap@acme.com** or **1-800-555-HELP**.  \n\u2014 **COMPENSATION AND BENEFITS**",
+    "retrieved": [
+      {
+        "score": 0.6366367701,
+        "vector_score": 0.552338243,
+        "keyword_score": 0.8333333333333334,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2781311186,
+        "vector_score": 0.325901598,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "PERFORMANCE REVIEW PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2773912193,
+        "vector_score": 0.324844599,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "CODE OF CONDUCT",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2634725719,
+        "vector_score": 0.304960817,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "DISCIPLINARY POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.25101403,
+        "vector_score": 0.2871629,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-04",
+    "question": "How long does ACME have to fulfill a GDPR data-subject request?",
+    "top_score": 0.7019522128,
+    "top_vector_score": 0.681360304,
+    "top_keyword_score": 0.75,
+    "top_section": "DATA PRIVACY AND GDPR COMPLIANCE",
+    "retrieval_seconds": 0.44398726399231236,
+    "answer_seconds": 2.1242164650029736,
+    "total_seconds": 2.568225388007704,
+    "answer": "ACME must fulfill GDPR data-subject requests within **30 calendar days**. *(DATA PRIVACY AND GDPR COMPLIANCE \u2014 Data Subject Rights)*",
+    "retrieved": [
+      {
+        "score": 0.7019522128,
+        "vector_score": 0.681360304,
+        "keyword_score": 0.75,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.49763222929999995,
+        "vector_score": 0.550188899,
+        "keyword_score": 0.375,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.41619048709999995,
+        "vector_score": 0.433843553,
+        "keyword_score": 0.375,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.40608035909999995,
+        "vector_score": 0.419400513,
+        "keyword_score": 0.375,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.369759542,
+        "vector_score": 0.42108506,
+        "keyword_score": 0.25,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-05",
+    "question": "What are the recovery-time and recovery-point objectives for Tier 1 systems?",
+    "top_score": 0.7118407426,
+    "top_vector_score": 0.588343918,
+    "top_keyword_score": 1.0,
+    "top_section": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+    "retrieval_seconds": 0.40217540100275073,
+    "answer_seconds": 1.3809422269987408,
+    "total_seconds": 1.783148649992654,
+    "answer": "Tier 1 systems have an **RTO of 4 hours** and an **RPO of 1 hour**.  \n\u2014 **BUSINESS CONTINUITY AND DISASTER RECOVERY: Recovery Objectives**",
+    "retrieved": [
+      {
+        "score": 0.7118407426,
+        "vector_score": 0.588343918,
+        "keyword_score": 1.0,
+        "section_title": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.31048880529999995,
+        "vector_score": 0.336412579,
+        "keyword_score": 0.25,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.30615419429999996,
+        "vector_score": 0.276648849,
+        "keyword_score": 0.375,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.30494595159999993,
+        
+        "vector_score": 0.274922788,
+        "keyword_score": 0.375,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.29488708659999996,
+        "vector_score": 0.367695838,
+        "keyword_score": 0.125,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-06",
+    "question": "What does HTTP 429 mean, and what should a developer do next?",
+    "top_score": 0.4609133559714285,
+    "top_vector_score": 0.474774182,
+    "top_keyword_score": 0.42857142857142855,
+    "top_section": "RATE LIMITING",
+    "retrieval_seconds": 0.45162758500373457,
+    "answer_seconds": 1.9495196259958902,
+    "total_seconds": 2.401167941003223,
+    "answer": "HTTP 429 means **Too Many Requests**: the API rate limit was exceeded. Do not retry immediately. Wait the number of seconds specified in the `Retry-After` header, then retry using exponential backoff with jitter. The `X-RateLimit-Reset` header indicates when the limit resets. *(RATE LIMITING; ERROR CODES REFERENCE)*",
+    "retrieved": [
+      {
+        "score": 0.4609133559714285,
+        "vector_score": 0.474774182,
+        "keyword_score": 0.42857142857142855,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.36666094905714286,
+        "vector_score": 0.462576866,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2517614460142857,
+        "vector_score": 0.237210229,
+        "keyword_score": 0.2857142857142857,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2512051917142857,
+        "vector_score": 0.23641558,
+        "keyword_score": 0.2857142857142857,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.17233779555714285,
+        "vector_score": 0.184972361,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-07",
+    "question": "How long is an API access token valid?",
+    "top_score": 0.6483873094,
+    "top_vector_score": 0.583410442,
+    "top_keyword_score": 0.8,
+    "top_section": "API AUTHENTICATION",
+    "retrieval_seconds": 0.3878858410025714,
+    "answer_seconds": 1.8145515700016404,
+    "total_seconds": 2.202459200998419,
+    "answer": "An API access token is valid for 1 hour (3,600 seconds). **[API AUTHENTICATION]**",
+    "retrieved": [
+      {
+        "score": 0.6483873094,
+        "vector_score": 0.583410442,
+        "keyword_score": 0.8,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3923962792,
+        "vector_score": 0.303423256,
+        "keyword_score": 0.6,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.34562997259999995,
+        "vector_score": 0.408042818,
+        "keyword_score": 0.2,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3095408419,
+        "vector_score": 0.356486917,
+        "keyword_score": 0.2,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.22199994229999997,
+        "vector_score": 0.231428489,
+        "keyword_score": 0.2,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-08",
+    "question": "Which encryption standard is required for data at rest?",
+    "top_score": 0.4915829778,
+    "top_vector_score": 0.434404254,
+    "top_keyword_score": 0.625,
+    "top_section": "INFORMATION SECURITY POLICY",
+    "retrieval_seconds": 0.38377428299281746,
+    "answer_seconds": 1.0613587379921228,
+    "total_seconds": 1.4451546839991352,
+    "answer": "Data at rest must be encrypted using **AES-256**. *(INFORMATION SECURITY POLICY \u2014 Encryption)*",
+    "retrieved": [
+      {
+        "score": 0.4915829778,
+        "vector_score": 0.434404254,
+        "keyword_score": 0.625,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3618846688,
+        "vector_score": 0.302692384,
+        "keyword_score": 0.5,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.26319983909999994,
+        "vector_score": 0.268856913,
+        "keyword_score": 0.25,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.25831703279999996,
+        "vector_score": 0.315452904,
+        "keyword_score": 0.125,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.23150823439999996,
+        "vector_score": 0.223583192,
+        "keyword_score": 0.25,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-09",
+    "question": "What is the password-length requirement?",
+    "top_score": 0.36319135429999994,
+    "top_vector_score": 0.375987649,
+    "top_keyword_score": 0.3333333333333333,
+    "top_section": "INFORMATION SECURITY POLICY",
+    "retrieval_seconds": 0.3854623539955355,
+    "answer_seconds": 2.022081129005528,
+    "total_seconds": 2.4075622859963914,
+    "answer": "Passwords must be at least 12 characters long. (**Information Security Policy \u2014 Password Policy**)",
+    "retrieved": [
+      {
+        "score": 0.36319135429999994,
+        "vector_score": 0.375987649,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2580200139,
+        "vector_score": 0.225742877,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.20357258319999996,
+        "vector_score": 0.290817976,
+        "keyword_score": 0.0,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.191735551,
+        "vector_score": 0.27390793,
+        "keyword_score": 0.0,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.15762777309999998,
+        "vector_score": 0.225182533,
+        "keyword_score": 0.0,
+        "section_title": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-10",
+    "question": "What happens when a P1 security incident is reported?",
+    "top_score": 0.5597480939,
+    "top_vector_score": 0.542497277,
+    "top_keyword_score": 0.6,
+    "top_section": "INCIDENT RESPONSE POLICY",
+    "retrieval_seconds": 0.5459133270051097,
+    "answer_seconds": 2.3229623530060053,
+    "total_seconds": 2.86889995499223,
+    "answer": "When a P1 (Critical) incident\u2014an active breach, ransomware, or data exfiltration in progress\u2014is reported:\n\n- The incident response team is engaged within 15 minutes.\n- Containment occurs within 1 hour.\n- If personal data is involved, the GDPR supervisory authority must be notified within 72 hours; affected individuals are notified without undue delay if risk is high.\n- For applicable financial data breaches, SEC/FinCEN notification occurs within 30 days.\n- State breach notification timing varies by jurisdiction, from 14\u201390 days.\n\n**Section: INCIDENT RESPONSE POLICY**",
+    "retrieved": [
+      {
+        "score": 0.5597480939,
+        "vector_score": 0.542497277,
+        "keyword_score": 0.6,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3222341636,
+        "vector_score": 0.288905948,
+        "keyword_score": 0.4,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.29531206909999996,
+        "vector_score": 0.250445813,
+        "keyword_score": 0.4,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2548211104,
+        "vector_score": 0.278315872,
+        "keyword_score": 0.2,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2352726789,
+        "vector_score": 0.336103827,
+        "keyword_score": 0.0,
+        "section_title": "AUDIT AND COMPLIANCE MONITORING",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-11",
+    "question": "What must happen to a terminated employee's system access, and by when?",
+    "top_score": 0.40783504810000004,
+    "top_vector_score": 0.368335783,
+    "top_keyword_score": 0.5,
+    "top_section": "INFORMATION SECURITY POLICY",
+    "retrieval_seconds": 0.3285389090015087,
+    "answer_seconds": 1.5788619899976766,
+    "total_seconds": 1.9074194519926095,
+    "answer": "A terminated employee\u2019s system access must be revoked within **2 hours of HR notification**. (**INFORMATION SECURITY POLICY \u2014 Access Control**)",
+    "retrieved": [
+      {
+        "score": 0.40783504810000004,
+        "vector_score": 0.368335783,
+        "keyword_score": 0.5,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3929915635,
+        "vector_score": 0.347130805,
+        "keyword_score": 0.5,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.38611022549999996,
+        "vector_score": 0.480157465,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "DISCIPLINARY POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3450622678,
+        "vector_score": 0.350088954,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31476121279999997,
+        "vector_score": 0.378230304,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-12",
+    "question": "What is the process for approving a high-risk vendor that handles personal data?",
+    "top_score": 0.6760234976999999,
+    "top_vector_score": 0.622890711,
+    "top_keyword_score": 0.8,
+    "top_section": "THIRD-PARTY VENDOR MANAGEMENT",
+    "retrieval_seconds": 0.37118974899931345,
+    "answer_seconds": 5.032565853995038,
+    "total_seconds": 5.403775730999769,
+    "answer": "The approval process is:\n\n1. The business owner submits a Vendor Request Form in ServiceNow.\n2. Procurement reviews commercial terms and pricing, including SLA, insurance, and liability.\n3. Security conducts an assessment using a standardized questionnaire based on SIG Lite or CAIQ, depending on criticality.\n4. Legal reviews the data processing agreement (DPA) and contract terms.\n5. Because the vendor handles personal data, the DPO reviews and approves the DPA.\n6. Because the vendor is high risk, the CISO signs off.\n7. The vendor is onboarded and added to the Approved Vendor Registry.\n\nThe process must be completed before engagement. *(THIRD-PARTY VENDOR MANAGEMENT)*",
+    "retrieved": [
+      {
+        "score": 0.6760234976999999,
+        "vector_score": 0.622890711,
+        "keyword_score": 0.8,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.40733207429999996,
+        "vector_score": 0.367617249,
+        "keyword_score": 0.5,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3588239709,
+        "vector_score": 0.426891387,
+        "keyword_score": 0.2,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.31948950219999994,
+        "vector_score": 0.327842146,
+        "keyword_score": 0.3,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.31686877999999996,
+        "vector_score": 0.3669554,
+        "keyword_score": 0.2,
+        "section_title": "AUDIT AND COMPLIANCE MONITORING",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-13",
+    "question": "Can an employee work remotely from outside their country of employment?",
+    "top_score": 0.7388464094,
+    "top_vector_score": 0.626923442,
+    "top_keyword_score": 1.0,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.43319695099489763,
+    "answer_seconds": 2.0134095730027184,
+    "total_seconds": 2.446626806005952,
+    "answer": "Yes, but only with prior written approval from both HR and Legal. **(REMOTE WORK POLICY)**",
+    "retrieved": [
+      {
+        "score": 0.7388464094,
+        "vector_score": 0.626923442,
+        "keyword_score": 1.0,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.36078115099999997,
+        "vector_score": 0.30111593,
+        "keyword_score": 0.5,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3231029303,
+        "vector_score": 0.300861329,
+        "keyword_score": 0.375,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2864896983,
+        "vector_score": 0.355699569,
+        "keyword_score": 0.125,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.276656377,
+        "vector_score": 0.23450911,
+        "keyword_score": 0.375,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-14",
+    "question": "What is ACME's payroll schedule?",
+    "top_score": 0.6360322999999999,
+    "top_vector_score": 0.587189,
+    "top_keyword_score": 0.75,
+    "top_section": "COMPENSATION AND BENEFITS",
+    "retrieval_seconds": 0.3356972159963334,
+    "answer_seconds": 0.9653075839887606,
+    "total_seconds": 1.3010252249951009,
+    "answer": "The policy corpus does not provide information about ACME\u2019s payroll schedule.",
+    "retrieved": [
+      {
+        "score": 0.6360322999999999,
+        "vector_score": 0.587189,
+        "keyword_score": 0.75,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.4309843658,
+        "vector_score": 0.508549094,
+        "keyword_score": 0.25,
+        "section_title": "PERFORMANCE REVIEW PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.4263512912,
+        "vector_score": 0.501930416,
+        "keyword_score": 0.25,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.4164013386,
+        "vector_score": 0.487716198,
+        "keyword_score": 0.25,
+        "section_title": "GRIEVANCE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.4126919952,
+        "vector_score": 0.482417136,
+        "keyword_score": 0.25,
+        "section_title": "CODE OF CONDUCT",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-15",
+    "question": "Does ACME provide employee stock options?",
+    "top_score": 0.5586293653,
+    "top_vector_score": 0.626613379,
+    "top_keyword_score": 0.4,
+    "top_section": "COMPENSATION AND BENEFITS",
+    "retrieval_seconds": 0.3012714870128548,
+    "answer_seconds": 3.3846688630001154,
+    "total_seconds": 3.6859599870076636,
+    "answer": "The policy corpus does not provide enough information. The \u201cCOMPENSATION AND BENEFITS\u201d section does not mention employee stock options.",
+    "retrieved": [
+      {
+        "score": 0.5586293653,
+        "vector_score": 0.626613379,
+        "keyword_score": 0.4,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.45055784089999995,
+        "vector_score": 0.472225487,
+        "keyword_score": 0.4,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.4447685105,
+        "vector_score": 0.463955015,
+        "keyword_score": 0.4,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.42946467229999996,
+        "vector_score": 0.442092389,
+        "keyword_score": 0.4,
+        "section_title": "PERFORMANCE REVIEW PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.41500153289999997,
+        "vector_score": 0.507145047,
+        "keyword_score": 0.2,
+        "section_title": "CODE OF CONDUCT",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ-16",
+    "question": "When does an employee become eligible for remote work: after 90 days or after 6 months?",
+    "top_score": 0.6159534752,
+    "top_vector_score": 0.629933536,
+    "top_keyword_score": 0.5833333333333334,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.44406370900105685,
+    "answer_seconds": 3.8126066679978976,
+    "total_seconds": 4.256691784001305,
+    "answer": "The policy corpus is conflicting and does not provide enough information to determine which rule controls.\n\n- **REMOTE WORK POLICY:** eligible after completing the **6-month probationary period**.\n- **ONBOARDING PROCESS:** remote work eligibility begins on **Day 90**.",
+    "retrieved": [
+      {
+        "score": 0.6159534752,
+        "vector_score": 0.629933536,
+        "keyword_score": 0.5833333333333334,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.4533034682,
+        "vector_score": 0.540433526,
+        "keyword_score": 0.25,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.33312043529999996,
+        "vector_score": 0.368743479,
+        "keyword_score": 0.25,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3316226482,
+        "vector_score": 0.259460926,
+        "keyword_score": 0.5,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.3267127366,
+        "vector_score": 0.323875338,
+        "keyword_score": 0.3333333333333333,
+        "section_title": "SICK LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      }
+    ]
+  }
+]

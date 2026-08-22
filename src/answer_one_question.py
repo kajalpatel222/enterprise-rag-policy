@@ -1,17 +1,18 @@
-"""Generate one grounded answer from the saved retrieval results."""
+"""Generate one answer from the retrieval snapshot saved by query_pinecone.py."""
 
 from __future__ import annotations
 
 import json
 import logging
-import os
-from pathlib import Path
 
-from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+try:
+    # This works when the file is run as part of the src package.
+    from .rag_pipeline import PROJECT_ROOT, answer_question, create_components
+except ImportError:
+    # This also supports the beginner-friendly command: python src/answer_one_question.py
+    from rag_pipeline import PROJECT_ROOT, answer_question, create_components
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RETRIEVAL_PATH = PROJECT_ROOT / "data" / "processed" / "preview" / "retrieval_results.json"
 OUTPUT_PATH = PROJECT_ROOT / "data" / "processed" / "preview" / "answer_result.json"
 
@@ -20,42 +21,13 @@ logger = logging.getLogger(__name__)
 
 
 def main() -> None:
-    # Load the question and retrieved policy chunks produced by query_pinecone.py.
-    load_dotenv(PROJECT_ROOT / ".env")
+    # Read the question and retrieved chunks produced by query_pinecone.py.
     retrieval = json.loads(RETRIEVAL_PATH.read_text(encoding="utf-8"))
     question = retrieval["question"]
-    # Put the retrieved chunks into a clearly separated context block.
-    context = "\n\n---\n\n".join(
-        f"Source: {result['metadata']['source_file']}\n"
-        f"Section: {result['metadata']['section_title']}\n"
-        f"{result['text']}"
-        for result in retrieval["results"]
-    )
+    _vector_store, chat = create_components()
 
-    # This instruction is our main anti-hallucination guardrail:
-    # the model must refuse when the retrieved context does not contain an answer.
-    prompt = f"""Answer the employee's question using only the policy context below.
-If the context does not contain the answer, say that the policy corpus does not provide
-enough information. Keep the answer concise and cite the relevant section title.
-
-Question:
-{question}
-
-Policy context:
-{context}
-"""
-
-    logger.info("Sending retrieved context to chat model: %s", os.environ["CHAT_MODEL"])
-    # The chat model writes the final answer; it does not search Pinecone itself.
-    chat = ChatOpenAI(
-        model=os.environ["CHAT_MODEL"],
-        api_key=os.environ["OPENROUTER_API_KEY"],
-        base_url=os.environ["OPENROUTER_BASE_URL"],
-        temperature=0,
-    )
-    response = chat.invoke(prompt)
-    answer = response.content
-    # Save the answer together with sources so we can audit the response later.
+    # The shared function builds the grounded prompt and calls the chat model.
+    answer, _answer_seconds = answer_question(chat, question, retrieval["results"])
     result = {
         "question": question,
         "answer": answer,
@@ -68,6 +40,7 @@ Policy context:
             for item in retrieval["results"]
         ],
     }
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(result, indent=2), encoding="utf-8")
     logger.info("Answer received and saved to %s", OUTPUT_PATH)
     print(f"\nAnswer:\n{answer}")

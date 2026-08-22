@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import re
 import time
 from pathlib import Path
 from typing import Any
@@ -11,10 +12,26 @@ from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_pinecone import PineconeVectorStore
 
-from .query_pinecone import keyword_score
-
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+# Common question words do not help identify the relevant policy section.
+STOP_WORDS = {
+    "a", "an", "and", "are", "by", "can", "does", "how", "is",
+    "must", "of", "the", "to", "what", "when", "with",
+}
+
+
+def keyword_score(question: str, text: str) -> float:
+    """Return the fraction of useful question words found in a text chunk."""
+    question_terms = {
+        word
+        for word in re.findall(r"\b[a-z0-9]+\b", question.lower())
+        if word not in STOP_WORDS
+    }
+    text_terms = set(re.findall(r"\b[a-z0-9]+\b", text.lower()))
+    if not question_terms:
+        return 0.0
+    return len(question_terms & text_terms) / len(question_terms)
 
 
 def create_components() -> tuple[PineconeVectorStore, ChatOpenAI]:

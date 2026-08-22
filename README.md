@@ -9,11 +9,19 @@ Build a Python and Streamlit application that answers questions from a curated e
 ## Workspace layout
 
 - `data/raw/` - Source policy documents exactly as downloaded.
-- `data/processed/` - Cleaned, chunked, or derived data created by the pipeline.
-- `src/` - Application and RAG pipeline code.
-- `notebooks/` - Small experiments and retrieval comparisons.
-- `tests/` - Evaluation questions and automated checks.
+- `data/processed/` - Temporary generated files; the folder itself is kept empty in Git.
+- `src/rag_pipeline.py` - Reusable Pinecone retrieval and grounded answer logic.
+- `src/prepare_chunks.py` - Turns source policy sections into structured chunks.
+- `src/index_corpus.py` - Embeds chunks and uploads them to Pinecone.
+- `src/query_pinecone.py` - Optional terminal retrieval inspection tool.
+- `src/answer_one_question.py` - Optional terminal answer inspection tool.
+- `tests/run_evaluation.py` - Evaluation runner for the question sets in `evals/`.
 - `reports/` - Evaluation results and project-submission material.
+
+The Python files contain comments around the important steps: loading settings, embedding
+questions, retrieving chunks, reranking exact terms, and asking the answer model. The
+short version is: `rag_pipeline.py` is reusable logic; the other Python files are small
+commands that call it for one specific job.
 
 We will choose the corpus, retrieval strategy, and dependencies before adding application code.
 
@@ -41,3 +49,14 @@ streamlit run app.py
 
 The browser interface uses the same retrieval baseline as the evaluation runner. Expand
 `Retrieved sources` below an answer to inspect the sections and response timing.
+
+## Run an evaluation
+
+```bash
+python tests/run_evaluation.py \
+  --eval-file evals/evaluation_questions_2.md \
+  --output reports/evaluation_questions_2_results_2.json
+```
+
+The evaluation questions live in `evals/`, and each run is saved separately in `reports/`.
+This keeps experiments from overwriting earlier results.
