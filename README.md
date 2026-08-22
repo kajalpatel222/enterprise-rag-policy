@@ -10,6 +10,7 @@ Build a Python and Streamlit application that answers questions from a curated e
 
 - `data/raw/` - Source policy documents exactly as downloaded.
 - `data/processed/` - Temporary generated files; the folder itself is kept empty in Git.
+- `docs/architecture.md` - Diagrams for ingestion, retrieval, routing, and framework usage.
 - `src/rag_pipeline.py` - Reusable Pinecone retrieval and grounded answer logic.
 - `src/prepare_chunks.py` - Turns source policy sections into structured chunks.
 - `src/index_corpus.py` - Embeds chunks and uploads them to Pinecone.
