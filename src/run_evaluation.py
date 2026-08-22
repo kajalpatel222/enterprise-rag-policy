@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import argparse
 import logging
 import os
 import re
@@ -20,16 +21,14 @@ except ImportError:
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-EVAL_PATH = PROJECT_ROOT / "evals" / "evaluation_questions_1.md"
-OUTPUT_PATH = PROJECT_ROOT / "reports" / "evaluation_results_3.json"
 
 logging.basicConfig(level=logging.WARNING, format="%(levelname)s | %(message)s")
 
 
-def load_questions() -> list[dict[str, str]]:
+def load_questions(eval_path: Path) -> list[dict[str, str]]:
     """Read question IDs and questions from the evaluation markdown table."""
-    table_row = re.compile(r"^\|\s*(EQ-\d+)\s*\|\s*(.*?)\s*\|", re.MULTILINE)
-    contents = EVAL_PATH.read_text(encoding="utf-8")
+    table_row = re.compile(r"^\|\s*((?:EQ-\d+|EQ2-\d+))\s*\|\s*(.*?)\s*\|", re.MULTILINE)
+    contents = eval_path.read_text(encoding="utf-8")
     return [
         {"id": question_id, "question": question}
         for question_id, question in table_row.findall(contents)
@@ -37,8 +36,24 @@ def load_questions() -> list[dict[str, str]]:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Run a RAG evaluation set")
+    parser.add_argument(
+        "--eval-file",
+        default="evals/evaluation_questions_1.md",
+        help="Evaluation markdown file relative to the project root",
+    )
+    parser.add_argument(
+        "--output",
+        default="reports/evaluation_results_4.json",
+        help="Output JSON file relative to the project root",
+    )
+    args = parser.parse_args()
+    eval_path = PROJECT_ROOT / args.eval_file
+    output_path = PROJECT_ROOT / args.output
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
     load_dotenv(PROJECT_ROOT / ".env")
-    questions = load_questions()
+    questions = load_questions(eval_path)
 
     # Both the documents and the questions must use the same embedding model.
     embeddings = OpenAIEmbeddings(
@@ -87,10 +102,10 @@ def main() -> None:
         prompt = f"""Answer the employee's question using only the policy context below.
 If the context does not contain the answer, say that the policy corpus does not provide
 enough information. Keep the answer concise and cite the relevant section title.
-For multi-part or process questions, include every relevant action, deadline, notification
-requirement, exception, and contact found in the context. Do not omit important details
-just to make the answer shorter.
-
+Do not add facts, deadlines, obligations, or interpretations that are not directly stated
+in the context. For a direct question, answer only what was asked. For a multi-part or
+process question, include every relevant action, deadline, notification requirement,
+exception, and contact found in the context, while avoiding unrelated policy details.
 Question:
 {question}
 
@@ -126,8 +141,11 @@ Policy context:
                 ],
             }
         )
+        # Save after each question so a long evaluation can resume safely after an interruption.
+        output_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
+        print(f"Completed {item['id']} ({len(results)}/{len(questions)})", flush=True)
 
-    OUTPUT_PATH.write_text(json.dumps(results, indent=2), encoding="utf-8")
+    output_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
 
     print("| ID | Retrieval (s) | Answer (s) | Total (s) | Top Section |")
     print("| --- | ---: | ---: | ---: | --- |")
@@ -137,7 +155,7 @@ Policy context:
             f"{result['answer_seconds']:.2f} | {result['total_seconds']:.2f} | "
             f"{result['top_section']} |"
         )
-    print(f"\nFull results saved to {OUTPUT_PATH}")
+    print(f"\nFull results saved to {output_path}")
 
 
 if __name__ == "__main__":
