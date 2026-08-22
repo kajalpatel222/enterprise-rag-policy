@@ -119,6 +119,10 @@ Do not add urgency words such as "immediately" or "promptly", or new deadlines, 
 the policy context explicitly states them.
 Only apply a conditional rule when the scenario satisfies its condition. Otherwise, state
 the condition explicitly or leave that rule out.
+For conflict questions, explain only the conflicting rules and what cannot be determined;
+do not append general policy rules that the question did not ask about.
+For questions with no answer in the context, give a brief refusal and do not list nearby
+policy details merely to justify the refusal.
 Do not add facts, deadlines, obligations, or interpretations that are not directly stated
 in the context. For a direct question, answer only what was asked. For a multi-part or
 process question, include every relevant action, deadline, notification requirement,
