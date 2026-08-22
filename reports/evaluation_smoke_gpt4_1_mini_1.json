@@ -1,0 +1,296 @@
+[
+  {
+    "id": "EQ2-04",
+    "question": "A developer receives HTTP 429 while using an OAuth access token. What does the error mean, how should they retry, and how long is the token valid?",
+    "top_score": 0.4190627486,
+    "top_vector_score": 0.464732498,
+    "top_keyword_score": 0.3125,
+    "top_section": "ERROR CODES REFERENCE",
+    "retrieval_seconds": 1.0945338470046408,
+    "answer_seconds": 1.9422699379938422,
+    "total_seconds": 3.036850320000667,
+    "answer": "HTTP 429 means the rate limit has been exceeded. The response includes a Retry-After header indicating how many seconds to wait before retrying. You should implement exponential backoff with jitter for retry logic and avoid immediate retries on 429 errors (RATE LIMITING).\n\nThe OAuth access token is valid for 3600 seconds (1 hour). Use the refresh token to obtain a new access token before it expires (API AUTHENTICATION).",
+    "retrieved": [
+      {
+        "score": 0.4190627486,
+        "vector_score": 0.464732498,
+        "keyword_score": 0.3125,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.40239798399999993,
+        "vector_score": 0.49449712,
+        "keyword_score": 0.1875,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3978037717,
+        "vector_score": 0.434362531,
+        "keyword_score": 0.3125,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.1999450562,
+        "vector_score": 0.232064366,
+        "keyword_score": 0.125,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.18383087239999998,
+        "vector_score": 0.262615532,
+        "keyword_score": 0.0,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-07",
+    "question": "What protections apply to a privileged administrator who works remotely?",
+    "top_score": 0.41720762495714286,
+    "top_vector_score": 0.534786403,
+    "top_keyword_score": 0.14285714285714285,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.3007102599949576,
+    "answer_seconds": 3.473615126000368,
+    "total_seconds": 3.774388532008743,
+    "answer": "A privileged administrator working remotely must comply with the following protections:\n\n- Remote work rules: They may work remotely up to 3 days per week after 6 months probation, with manager approval, must maintain a safe workspace, be reachable via Slack during core hours (10 AM\u20133 PM local time), and respond within 30 minutes (REMOTE WORK POLICY).\n- Access control: Their privileged access requires Multi-Factor Authentication (MFA), follows least privilege principles, is reviewed quarterly, and must be individual and auditable (INFORMATION SECURITY POLICY).\n- Encryption: Their laptop must have full-disk encryption enabled (BitLocker or FileVault), and all data in transit must use TLS 1.2 or higher (INFORMATION SECURITY POLICY).\n- Acceptable use: They must not circumvent security controls or expose ACME systems to security risks (ACCEPTABLE USE POLICY).\n\nNo additional specific protections for privileged administrators working remotely are stated beyond these policies.",
+    "retrieved": [
+      {
+        "score": 0.41720762495714286,
+        "vector_score": 0.534786403,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3316842429571428,
+        "vector_score": 0.412610143,
+        "keyword_score": 0.14285714285714285,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.31559252409999994,
+        "vector_score": 0.450846463,
+        "keyword_score": 0.0,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24583425229999997,
+        "vector_score": 0.351191789,
+        "keyword_score": 0.0,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24492163989999996,
+        "vector_score": 0.349888057,
+        "keyword_score": 0.0,
+        "section_title": "INCIDENT RESPONSE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-10",
+    "question": "A webhook endpoint returns a non-2xx response. How many times will delivery be retried, what backoff is used, and how should the signature be validated?",
+    "top_score": 0.5954556057823529,
+    "top_vector_score": 0.548129857,
+    "top_keyword_score": 0.7058823529411765,
+    "top_section": "WEBHOOKS",
+    "retrieval_seconds": 0.40156070500961505,
+    "answer_seconds": 1.8819626359909307,
+    "total_seconds": 2.2835514869948383,
+    "answer": "Webhook delivery is retried up to 5 times with exponential backoff if your endpoint returns a non-2xx status code. The webhook payloads are signed with HMAC-SHA256, and you should validate the X-ACME-Signature header against your webhook secret to ensure payload authenticity. Unverified webhooks must be rejected.",
+    "retrieved": [
+      {
+        "score": 0.5954556057823529,
+        "vector_score": 0.548129857,
+        "keyword_score": 0.7058823529411765,
+        "section_title": "WEBHOOKS",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3441627126941176,
+        "vector_score": 0.390820682,
+        "keyword_score": 0.23529411764705882,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.3031266007705882,
+        "vector_score": 0.357407749,
+        "keyword_score": 0.17647058823529413,
+        "section_title": "ERROR CODES REFERENCE",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2400412588235294,
+        "vector_score": 0.317706,
+        "keyword_score": 0.058823529411764705,
+        "section_title": "SLA AND UPTIME",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      },
+      {
+        "score": 0.2346024800470588,
+        "vector_score": 0.284726232,
+        "keyword_score": 0.11764705882352941,
+        "section_title": "API AUTHENTICATION",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-13",
+    "question": "What is the difference between `RTO` and `RPO` for Tier 1 systems?",
+    "top_score": 0.5469207732999999,
+    "top_vector_score": 0.459886819,
+    "top_keyword_score": 0.75,
+    "top_section": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+    "retrieval_seconds": 0.3534052269969834,
+    "answer_seconds": 2.045301638994715,
+    "total_seconds": 2.398734072994557,
+    "answer": "For Tier 1 systems, the difference between RTO and RPO is:\n\n- RTO (Recovery Time Objective) is 4 hours, meaning the maximum acceptable downtime before the system must be restored.\n- RPO (Recovery Point Objective) is 1 hour, meaning the maximum acceptable data loss measured in time before recovery.\n\nSo, RTO focuses on how quickly the system must be back online, while RPO focuses on how much data loss is tolerable.",
+    "retrieved": [
+      {
+        "score": 0.5469207732999999,
+        "vector_score": 0.459886819,
+        "keyword_score": 0.75,
+        "section_title": "BUSINESS CONTINUITY AND DISASTER RECOVERY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.2930107234,
+        "vector_score": 0.257872462,
+        "keyword_score": 0.375,
+        "section_title": "THIRD-PARTY VENDOR MANAGEMENT",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.27864580429999997,
+        "vector_score": 0.237351149,
+        "keyword_score": 0.375,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.24813896599999996,
+        "vector_score": 0.24734138,
+        "keyword_score": 0.25,
+        "section_title": "PERFORMANCE REVIEW PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2345917386,
+        "vector_score": 0.227988198,
+        "keyword_score": 0.25,
+        "section_title": "RATE LIMITING",
+        "source_file": "data/raw/technical/tech_docs.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-18",
+    "question": "What are the remote-work rules for an employee who has completed Day 90 but not the 6-month probationary period?",
+    "top_score": 0.6198507905,
+    "top_vector_score": 0.671215415,
+    "top_keyword_score": 0.5,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 0.35969085698889103,
+    "answer_seconds": 1.0655555989942513,
+    "total_seconds": 1.4252758310030913,
+    "answer": "An employee who has completed Day 90 but not the full 6-month probationary period is not yet eligible to work remotely. Remote work eligibility begins only after completing the 6-month probationary period.",
+    "retrieved": [
+      {
+        "score": 0.6198507905,
+        "vector_score": 0.671215415,
+        "keyword_score": 0.5,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.5241205570999999,
+        "vector_score": 0.561243653,
+        "keyword_score": 0.4375,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31732523469999996,
+        "vector_score": 0.372964621,
+        "keyword_score": 0.1875,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2821751267,
+        "vector_score": 0.322750181,
+        "keyword_score": 0.1875,
+        "section_title": "SICK LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2585543218,
+        "vector_score": 0.289006174,
+        "keyword_score": 0.1875,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-19",
+    "question": "Does ACME provide a home-office equipment stipend?",
+    "top_score": 0.4460739019999999,
+    "top_vector_score": 0.56581986,
+    "top_keyword_score": 0.16666666666666666,
+    "top_section": "COMPENSATION AND BENEFITS",
+    "retrieval_seconds": 0.36959851400752086,
+    "answer_seconds": 0.7894918930105632,
+    "total_seconds": 1.1591094120085472,
+    "answer": "ACME policy does not mention providing a home-office equipment stipend.",
+    "retrieved": [
+      {
+        "score": 0.4460739019999999,
+        "vector_score": 0.56581986,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3702784837,
+        "vector_score": 0.457540691,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.34085386959999997,
+        "vector_score": 0.415505528,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "CODE OF CONDUCT",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3184153976,
+        "vector_score": 0.383450568,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "GRIEVANCE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31696286469999996,
+        "vector_score": 0.381375521,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  }
+]
