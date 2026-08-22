@@ -109,6 +109,10 @@ Use bullets only when the question asks for several separate steps, comparisons,
 When an answer comes from multiple policy sections, prefer one concise sentence per
 section using this style: "Under **[Policy Section]**, ...". Keep the answer concise and
 cite the relevant section title naturally in the sentence.
+If the same requirement appears in more than one section, state it only once and cite
+the supporting sections together instead of repeating the requirement.
+For scenario questions, include the controls needed to resolve that scenario and omit
+nearby policy details that do not change the answer.
 Do not add facts, deadlines, obligations, or interpretations that are not directly stated
 in the context. For a direct question, answer only what was asked. For a multi-part or
 process question, include every relevant action, deadline, notification requirement,
