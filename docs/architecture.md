@@ -157,6 +157,29 @@ The graph is built and compiled in `src/rag_graph.py`. LangGraph controls execut
 the conditional model branch, while the existing LangChain functions still perform retrieval
 and answer generation. It does not add another model call.
 
+### View the compiled LangGraph
+
+LangGraph can expose a compiled workflow as a drawable graph. The local visualization helper
+uses the official `compiled_graph.get_graph().draw_mermaid()` API and writes its Mermaid text to
+`docs/rag_graph.mmd`:
+
+```bash
+.venv/bin/python scripts/visualize_rag_graph.py
+```
+
+This command only compiles and inspects the graph. It supplies inert placeholder dependencies,
+does not invoke any graph node, and therefore makes no Pinecone, embedding, or chat-model calls.
+
+To view the result, open `docs/rag_graph.mmd` in an editor with Mermaid preview support, or paste
+its contents into the [Mermaid Live Editor](https://mermaid.live/). GitHub does not render a
+standalone `.mmd` file automatically, but the text can also be placed inside a fenced `mermaid`
+block in any Markdown viewer that supports Mermaid.
+
+The diagram represents the compiled control-flow topology: start, retrieval, routing, the two
+possible answer branches, and end. Solid arrows are unconditional transitions; dotted arrows
+leave the conditional router. It does not show runtime state values, retrieved policy sections,
+which branch a particular question selected, timing, or external service calls.
+
 A future extension could add an evidence-sufficiency or verification node, but that is not part
 of the current graph because it would need a reliable confidence rule and additional evaluation.
 

@@ -11,6 +11,8 @@ Build a Python and Streamlit application that answers questions from a curated e
 - `data/raw/` - Source policy documents exactly as downloaded.
 - `data/processed/` - Temporary generated files; the folder itself is kept empty in Git.
 - `docs/architecture.md` - Diagrams for ingestion, retrieval, routing, and framework usage.
+- `docs/rag_graph.mmd` - Mermaid text exported from the compiled LangGraph workflow.
+- `scripts/visualize_rag_graph.py` - Regenerates the graph diagram without external calls.
 - `src/rag_graph.py` - LangGraph state and conditional answer-model workflow.
 - `src/rag_pipeline.py` - Reusable Pinecone retrieval and grounded answer logic.
 - `src/prepare_chunks.py` - Turns source policy sections into structured chunks.
@@ -53,6 +55,19 @@ streamlit run app.py
 The browser interface uses the same retrieval baseline as the evaluation runner. Expand
 `Retrieved sources` below an answer to inspect the sections and response timing.
 The live request flow is orchestrated by LangGraph.
+
+## View the compiled LangGraph
+
+Generate the Mermaid diagram locally from the same compiled graph used by the app:
+
+```bash
+.venv/bin/python scripts/visualize_rag_graph.py
+```
+
+Then open `docs/rag_graph.mmd` with a Mermaid preview extension or paste its contents into the
+[Mermaid Live Editor](https://mermaid.live/). The command compiles the topology but does not run
+the workflow, so it makes no model, embedding, or Pinecone calls. See `docs/architecture.md` for
+an explanation of the nodes, branches, and diagram limitations.
 
 ## Run an evaluation
 
