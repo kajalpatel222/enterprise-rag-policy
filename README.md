@@ -11,6 +11,9 @@ Build a Python and Streamlit application that answers questions from a curated e
 - `data/raw/` - Source policy documents exactly as downloaded.
 - `data/processed/` - Temporary generated files; the folder itself is kept empty in Git.
 - `docs/architecture.md` - Diagrams for ingestion, retrieval, routing, and framework usage.
+- `docs/project_submission.md` - Consolidated handout-aligned project documentation.
+- `docs/demo_script.md` - Five-minute recording outline.
+- `docs/submission_checklist.md` - Required deliverables and remaining submission actions.
 - `docs/rag_graph.mmd` - Mermaid text exported from the compiled LangGraph workflow.
 - `scripts/visualize_rag_graph.py` - Regenerates the graph diagram without external calls.
 - `src/rag_graph.py` - LangGraph state and conditional answer-model workflow.
@@ -27,8 +30,6 @@ questions, retrieving chunks, reranking exact terms, and asking the answer model
 short version is: `rag_pipeline.py` is reusable logic; the other Python files are small
 commands that call it for one specific job.
 
-We will choose the corpus, retrieval strategy, and dependencies before adding application code.
-
 ## Current Retrieval Baseline
 
 The current retrieval flow is intentionally simple:
@@ -42,6 +43,25 @@ The current retrieval flow is intentionally simple:
 This approach improves exact-term retrieval without adding another LLM call or creating a
 second sparse Pinecone index. The initial performance goal is an end-to-end response under
 10 seconds, measured separately for retrieval and answer generation.
+
+## Setup
+
+Create the Python environment and install dependencies:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Create a local `.env` from `.env.example`, then provide the Pinecone and OpenRouter settings.
+The real `.env` is ignored by Git and must never be committed.
+
+Index the corpus after the Pinecone index and environment settings are ready:
+
+```bash
+python src/index_corpus.py
+```
 
 ## Run the chat interface
 
@@ -73,8 +93,9 @@ an explanation of the nodes, branches, and diagram limitations.
 
 ```bash
 python tests/run_evaluation.py \
+  --graph \
   --eval-file evals/evaluation_questions_2.md \
-  --output reports/evaluation_questions_2_results_2.json
+  --output reports/evaluation_langgraph_full.json
 ```
 
 The evaluation questions live in `evals/`, and each run is saved separately in `reports/`.
@@ -84,6 +105,7 @@ For a cheaper focused check, run only selected question IDs:
 
 ```bash
 python tests/run_evaluation.py \
+  --graph \
   --eval-file evals/evaluation_smoke.md \
   --ids EQ2-04,EQ2-18 \
   --output reports/evaluation_smoke_results.json
