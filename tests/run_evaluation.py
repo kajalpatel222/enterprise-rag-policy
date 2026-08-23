@@ -21,6 +21,7 @@ from src.rag_pipeline import (
     retrieve,
     select_answer_model,
 )
+from src.rag_graph import create_rag_graph
 
 
 def load_questions(eval_path: Path) -> list[dict[str, str]]:
@@ -57,6 +58,11 @@ def main() -> None:
         action="store_true",
         help="Route complex questions to COMPLEX_CHAT_MODEL",
     )
+    parser.add_argument(
+        "--graph",
+        action="store_true",
+        help="Run retrieval, routing, and answering through LangGraph",
+    )
     args = parser.parse_args()
     eval_path = PROJECT_ROOT / args.eval_file
     output_path = PROJECT_ROOT / args.output
@@ -70,24 +76,35 @@ def main() -> None:
         if missing_ids:
             raise ValueError(f"Question IDs not found: {', '.join(sorted(missing_ids))}")
     vector_store, standard_chat, complex_chat = create_components()
+    graph = create_rag_graph(vector_store, standard_chat, complex_chat)
     results: list[dict[str, object]] = []
 
     for item in questions:
         question_start = time.perf_counter()
-        retrieval_start = time.perf_counter()
-        retrieved = retrieve(vector_store, item["question"])
-        retrieval_seconds = time.perf_counter() - retrieval_start
-        if args.routed:
+        if args.graph:
+            graph_result = graph.invoke({"question": item["question"]})
+            retrieved = graph_result["retrieved"]
+            retrieval_seconds = graph_result["retrieval_seconds"]
+            route = graph_result["route"]
+            route_reason = graph_result["route_reason"]
+            answer = graph_result["answer"]
+            answer_seconds = graph_result["answer_seconds"]
+        else:
+            retrieval_start = time.perf_counter()
+            retrieved = retrieve(vector_store, item["question"])
+            retrieval_seconds = time.perf_counter() - retrieval_start
+        if not args.graph and args.routed:
             chat, route, route_reason = select_answer_model(
                 item["question"],
                 standard_chat,
                 complex_chat,
             )
-        else:
+        elif not args.graph:
             chat = standard_chat
             route = "standard"
             route_reason = "routing disabled"
-        answer, answer_seconds = answer_question(chat, item["question"], retrieved)
+        if not args.graph:
+            answer, answer_seconds = answer_question(chat, item["question"], retrieved)
 
         results.append(
             {

@@ -1,0 +1,106 @@
+[
+  {
+    "id": "EQ2-18",
+    "question": "What are the remote-work rules for an employee who has completed Day 90 but not the 6-month probationary period?",
+    "route": "complex",
+    "route_reason": "complex phrase: but not",
+    "model": "google/gemini-3.7-flash",
+    "top_score": 0.6198507905,
+    "top_vector_score": 0.671215415,
+    "top_keyword_score": 0.5,
+    "top_section": "REMOTE WORK POLICY",
+    "retrieval_seconds": 1.2356345049920492,
+    "answer_seconds": 5.832376368998666,
+    "total_seconds": 7.077987052005483,
+    "answer": "There is a direct conflict in the policy documents regarding remote-work eligibility for this scenario:\n\n* According to the **REMOTE WORK POLICY** (`data/raw/hr/hr_policy.txt`), employees are eligible to work remotely up to 3 days per week only after completing a 6-month probationary period.\n* According to the **ONBOARDING PROCESS** section (`data/raw/hr/hr_policy.txt`), the probationary period ends and remote work eligibility begins at Day 90.\n\nBecause these sections conflict on the length of the probationary period and when eligibility begins, it cannot be determined whether an employee who has reached Day 90 but not 6 months is permitted to work remotely.",
+    "retrieved": [
+      {
+        "score": 0.6198507905,
+        "vector_score": 0.671215415,
+        "keyword_score": 0.5,
+        "section_title": "REMOTE WORK POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.5241205570999999,
+        "vector_score": 0.561243653,
+        "keyword_score": 0.4375,
+        "section_title": "ONBOARDING PROCESS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31732523469999996,
+        "vector_score": 0.372964621,
+        "keyword_score": 0.1875,
+        "section_title": "ANNUAL LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2821751267,
+        "vector_score": 0.322750181,
+        "keyword_score": 0.1875,
+        "section_title": "SICK LEAVE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.2585543218,
+        "vector_score": 0.289006174,
+        "keyword_score": 0.1875,
+        "section_title": "DATA PRIVACY AND GDPR COMPLIANCE",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  },
+  {
+    "id": "EQ2-19",
+    "question": "Does ACME provide a home-office equipment stipend?",
+    "route": "standard",
+    "route_reason": "simple lookup or unsupported question",
+    "model": "openai/gpt-4.1-mini",
+    "top_score": 0.4460739019999999,
+    "top_vector_score": 0.56581986,
+    "top_keyword_score": 0.16666666666666666,
+    "top_section": "COMPENSATION AND BENEFITS",
+    "retrieval_seconds": 0.3706200200103922,
+    "answer_seconds": 1.557760819006944,
+    "total_seconds": 1.9327777779981261,
+    "answer": "The provided ACME policies do not mention a home-office equipment stipend.",
+    "retrieved": [
+      {
+        "score": 0.4460739019999999,
+        "vector_score": 0.56581986,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "COMPENSATION AND BENEFITS",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3702784837,
+        "vector_score": 0.457540691,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "ACCEPTABLE USE POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      },
+      {
+        "score": 0.34085386959999997,
+        "vector_score": 0.415505528,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "CODE OF CONDUCT",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.3184153976,
+        "vector_score": 0.383450568,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "GRIEVANCE POLICY",
+        "source_file": "data/raw/hr/hr_policy.txt"
+      },
+      {
+        "score": 0.31696286469999996,
+        "vector_score": 0.381375521,
+        "keyword_score": 0.16666666666666666,
+        "section_title": "INFORMATION SECURITY POLICY",
+        "source_file": "data/raw/compliance/compliance_manual.txt"
+      }
+    ]
+  }
+]

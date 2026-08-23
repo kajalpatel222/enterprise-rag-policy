@@ -2,16 +2,10 @@
 
 from __future__ import annotations
 
-import time
-
 import streamlit as st
 
-from src.rag_pipeline import (
-    answer_question,
-    create_components,
-    retrieve,
-    select_answer_model,
-)
+from src.rag_graph import create_rag_graph
+from src.rag_pipeline import create_components
 
 
 st.set_page_config(page_title="ACME Policy Assistant")
@@ -19,8 +13,9 @@ st.set_page_config(page_title="ACME Policy Assistant")
 
 @st.cache_resource
 def load_pipeline():
-    """Create clients once per Streamlit session instead of per question."""
-    return create_components()
+    """Create and cache the clients plus the compiled LangGraph workflow."""
+    vector_store, standard_chat, complex_chat = create_components()
+    return create_rag_graph(vector_store, standard_chat, complex_chat)
 
 
 st.title("ACME Policy Assistant")
@@ -31,6 +26,7 @@ with st.sidebar:
     st.write("Semantic candidates: 10")
     st.write("Exact-term reranking: 30%")
     st.write("Answer context: top 5 chunks")
+    st.write("Orchestration: LangGraph")
     st.divider()
     st.caption("Answers are grounded in the indexed policy documents.")
 
@@ -64,16 +60,14 @@ if question:
 
     with st.chat_message("assistant"):
         try:
-            vector_store, standard_chat, complex_chat = load_pipeline()
-            chat, route, route_reason = select_answer_model(
-                question,
-                standard_chat,
-                complex_chat,
-            )
-            retrieval_start = time.perf_counter()
-            retrieved = retrieve(vector_store, question)
-            retrieval_seconds = time.perf_counter() - retrieval_start
-            answer, answer_seconds = answer_question(chat, question, retrieved)
+            graph = load_pipeline()
+            result = graph.invoke({"question": question})
+            retrieved = result["retrieved"]
+            route = result["route"]
+            route_reason = result["route_reason"]
+            answer = result["answer"]
+            retrieval_seconds = result["retrieval_seconds"]
+            answer_seconds = result["answer_seconds"]
             st.markdown(answer)
 
             sources = [

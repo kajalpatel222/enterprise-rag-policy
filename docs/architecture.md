@@ -138,37 +138,27 @@ the Week 2 implementation easy to inspect.
 
 ## 5. Where LangGraph Is Used
 
-LangGraph is **not currently installed or used**. The current request path is linear and does
-not need persistent graph state:
+LangGraph now orchestrates every Streamlit question. Its typed `RAGState` carries the question,
+retrieved evidence, route, route reason, final answer, and timings between nodes.
 
-`question -> retrieve -> rerank -> choose model -> answer`
-
-The Week 2 handout allows LangChain/LangGraph, n8n, Lyzr, **or another framework**, but its
-code-heavy track specifically describes LangChain plus LangGraph. Therefore, the current app
-is a working LangChain RAG project, but it does not yet demonstrate the LangGraph part of that
-track.
-
-If LangGraph is added later, it should orchestrate meaningful decisions rather than merely
-wrapping the same linear functions. A useful future graph would be:
+The implemented graph is:
 
 ```mermaid
 flowchart LR
     START([Question]) --> RETRIEVE[Retrieve and rerank]
-    RETRIEVE --> CHECK{Enough evidence?}
-    CHECK -->|No| REFUSE[Grounded refusal]
-    CHECK -->|Yes| COMPLEX{Complex or conflicting?}
-    COMPLEX -->|No| SIMPLE[Standard answer model]
-    COMPLEX -->|Yes| STRONG[Complex answer model]
-    SIMPLE --> VERIFY{Answer supported?}
-    STRONG --> VERIFY
-    VERIFY -->|Yes| END([Return answer])
-    VERIFY -->|No| REFUSE
-    REFUSE --> END
+    RETRIEVE --> ROUTE{Route question}
+    ROUTE -->|standard| SIMPLE[Standard answer model]
+    ROUTE -->|complex| STRONG[Complex answer model]
+    SIMPLE --> END([Return answer])
+    STRONG --> END
 ```
 
-This would make LangGraph responsible for state and branching: retrieved evidence, route,
-answer, verification result, and refusal. Whether to add it should be decided separately after
-the current architecture is understood.
+The graph is built and compiled in `src/rag_graph.py`. LangGraph controls execution order and
+the conditional model branch, while the existing LangChain functions still perform retrieval
+and answer generation. It does not add another model call.
+
+A future extension could add an evidence-sufficiency or verification node, but that is not part
+of the current graph because it would need a reliable confidence rule and additional evaluation.
 
 ## 6. Technology Responsibilities
 
@@ -180,5 +170,4 @@ the current architecture is understood.
 | OpenRouter | OpenAI-compatible gateway to embedding and chat models | Does not store the policy corpus |
 | Pinecone | Stores vectors and retrieves semantically similar chunks | Does not compose the final answer |
 | Answer model | Reads retrieved evidence and writes the grounded response | Must not answer beyond the provided chunks |
-| LangGraph | Not currently used; could manage branching and shared request state | Is not required for basic vector retrieval |
-
+| LangGraph | Carries request state and branches to the standard or complex model | Does not replace LangChain retrieval or prompting |

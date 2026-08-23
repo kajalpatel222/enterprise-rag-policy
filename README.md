@@ -11,6 +11,7 @@ Build a Python and Streamlit application that answers questions from a curated e
 - `data/raw/` - Source policy documents exactly as downloaded.
 - `data/processed/` - Temporary generated files; the folder itself is kept empty in Git.
 - `docs/architecture.md` - Diagrams for ingestion, retrieval, routing, and framework usage.
+- `src/rag_graph.py` - LangGraph state and conditional answer-model workflow.
 - `src/rag_pipeline.py` - Reusable Pinecone retrieval and grounded answer logic.
 - `src/prepare_chunks.py` - Turns source policy sections into structured chunks.
 - `src/index_corpus.py` - Embeds chunks and uploads them to Pinecone.
@@ -32,8 +33,9 @@ The current retrieval flow is intentionally simple:
 
 1. Pinecone retrieves the top 10 candidates using dense semantic search.
 2. Local keyword overlap scoring reranks those candidates.
-3. The best 5 chunks are sent to the answer model.
-4. The answer model must stay within the retrieved policy context.
+3. LangGraph carries the retrieved state and routes the question by complexity.
+4. The best 5 chunks are sent to the selected answer model.
+5. The answer model must stay within the retrieved policy context.
 
 This approach improves exact-term retrieval without adding another LLM call or creating a
 second sparse Pinecone index. The initial performance goal is an end-to-end response under
@@ -50,6 +52,7 @@ streamlit run app.py
 
 The browser interface uses the same retrieval baseline as the evaluation runner. Expand
 `Retrieved sources` below an answer to inspect the sections and response timing.
+The live request flow is orchestrated by LangGraph.
 
 ## Run an evaluation
 
